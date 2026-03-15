@@ -1,0 +1,286 @@
+{
+  "generated_at_utc": "2026-02-28T10:15:38Z",
+  "race_date": "20250112",
+  "races": [
+    {
+      "race_key": "06251401",
+      "race_date": "20250112",
+      "is_major_race": false,
+      "meta": {
+        "place_code": "6",
+        "year": "25",
+        "kai": "1",
+        "day": "4",
+        "race_num": "1",
+        "start_time": "1005",
+        "distance": "1200",
+        "track_type": "2",
+        "headcount": "16"
+      },
+      "picks": [
+        {
+          "rank": 1,
+          "horse_num": 9,
+          "pred_ev_place": -0.138944770582915,
+          "pred_score": 0.861055229417085,
+          "odds_win": 2.9,
+          "odds_place": 1.3,
+          "horse_name": "アイアンソリッド"
+        },
+        {
+          "rank": 2,
+          "horse_num": 8,
+          "pred_ev_place": -0.1565084072821179,
+          "pred_score": 0.8434915927178821,
+          "odds_win": 3.1,
+          "odds_place": 1.4,
+          "horse_name": "エルオレンス"
+        },
+        {
+          "rank": 3,
+          "horse_num": 7,
+          "pred_ev_place": -0.440348286500406,
+          "pred_score": 0.559651713499594,
+          "odds_win": 11.0,
+          "odds_place": 2.4,
+          "horse_name": "ハクサンリバーブ"
+        }
+      ],
+      "tickets": []
+    },
+    {
+      "race_key": "06251402",
+      "race_date": "20250112",
+      "is_major_race": false,
+      "meta": {
+        "place_code": "6",
+        "year": "25",
+        "kai": "1",
+        "day": "4",
+        "race_num": "2",
+        "start_time": "1035",
+        "distance": "1800",
+        "track_type": "2",
+        "headcount": "16"
+      },
+      "picks": [
+        {
+          "rank": 1,
+          "horse_num": 13,
+          "pred_ev_place": -0.0517577562000185,
+          "pred_score": 0.9482422437999816,
+          "odds_win": 2.1,
+          "odds_place": 1.2,
+          "horse_name": "サムシャイン"
+        },
+        {
+          "rank": 2,
+          "horse_num": 15,
+          "pred_ev_place": -0.2897722140831354,
+          "pred_score": 0.7102277859168645,
+          "odds_win": 4.2,
+          "odds_place": 1.5,
+          "horse_name": "オオタチ"
+        },
+        {
+          "rank": 3,
+          "horse_num": 14,
+          "pred_ev_place": -0.5738575881879717,
+          "pred_score": 0.4261424118120283,
+          "odds_win": 7.4,
+          "odds_place": 1.9,
+          "horse_name": "エテオクロス"
+        }
+      ],
+      "tickets": []
+    },
+    {
+      "race_key": "06251403",
+      "race_date": "20250112",
+      "is_major_race": false,
+      "meta": {
+        "place_code": "6",
+        "year": "25",
+        "kai": "1",
+        "day": "4",
+        "race_num": "3",
+        "start_time": "1105",
+        "distance": "1200",
+        "track_type": "2",
+        "headcount": "16"
+      },
+      "picks": [
+        {
+          "rank": 1,
+          "horse_num": 6,
+          "pred_ev_place": -0.0674668533334888,
+          "pred_score": 0.9325331466665112,
+          "odds_win": 3.3,
+          "odds_place": 1.4,
+          "horse_name": "カルデライト"
+        },
+        {
+          "rank": 2,
+          "horse_num": 15,
+          "pred_ev_place": -0.1327990208265666,
+          "pred_score": 0.8672009791734333,
+          "odds_win": 2.5,
+          "odds_place": 1.3,
+          "horse_name": "スリーソング"
+        },
+        {
+          "rank": 3,
+          "horse_num": 13,
+          "pred_ev_place": -0.3537073151067385,
+          "pred_score": 0.6462926848932615,
+          "odds_win": 7.5,
+          "odds_place": 2.0,
+          "horse_name": "アリアルブラック"
+        }
+      ],
+      "tickets": []
+    },
+    {
+      "race_key": "06251404",
+      "race_date": "20250112",
+      "is_major_race": false,
+      "meta": {
+        "place_code": "6",
+        "year": "25",
+        "kai": "1",
+        "day": "4",
+        "race_num": "4",
+        "start_time": "1135",
+        "distance": "1800",
+        "track_type": "2",
+        "headcount": "16"
+      },
+      "picks": [
+        {
+          "rank": 1,
+          "horse_num": 1,
+          "pred_ev_place": -0.1143141138871909,
+          "pred_score": 0.8856858861128091,
+          "odds_win": 2.6,
+          "odds_place": 1.4,
+          "horse_name": "イムホテプ"
+        },
+        {
+          "rank": 2,
+          "horse_num": 7,
+          "pred_ev_place": -0.3423093383811903,
+          "pred_score": 0.6576906616188096,
+          "odds_win": 5.4,
+          "odds_place": 1.8,
+          "horse_name": "チュウワクリスエス"
+        },
+        {
+          "rank": 3,
+          "horse_num": 13,
+          "pred_ev_place": -0.3580638819987469,
+          "pred_score": 0.641936118001253,
+          "odds_win": 6.5,
+          "odds_place": 2.0,
+          "horse_name": "タカイチナダル"
+        }
+      ],
+      "tickets": [
+        {
+          "bet_type": "sanrenpuku",
+          "combo": "121416",
+          "ev_est": 4.430463433214732,
+          "est_odds": 46944.24474484894
+        },
+        {
+          "bet_type": "wide",
+          "combo": "1216",
+          "ev_est": 4.271256971449724,
+          "est_odds": 6488.314257164173
+        }
+      ]
+    },
+    {
+      "race_key": "06251405",
+      "race_date": "20250112",
+      "is_major_race": false,
+      "meta": {
+        "place_code": "6",
+        "year": "25",
+        "kai": "1",
+        "day": "4",
+        "race_num": "5",
+        "start_time": "1225",
+        "distance": "2000",
+        "track_type": "1",
+        "headcount": "18"
+      },
+      "picks": [
+        {
+          "rank": 1,
+          "horse_num": 12,
+          "pred_ev_place": -0.0982412301233005,
+          "pred_score": 0.9017587698766996,
+          "odds_win": 4.1,
+          "odds_place": 1.6,
+          "horse_name": "オルグジェシダ"
+        },
+        {
+          "rank": 2,
+          "horse_num": 11,
+          "pred_ev_place": -0.1475388778721097,
+          "pred_score": 0.8524611221278903,
+          "odds_win": 3.8,
+          "odds_place": 1.6,
+          "horse_name": "ピエナフェーヴル"
+        },
+        {
+          "rank": 3,
+          "horse_num": 16,
+          "pred_ev_place": -0.4457543582820447,
+          "pred_score": 0.5542456417179553,
+          "odds_win": 5.2,
+          "odds_place": 1.8,
+          "horse_name": "ニシノエピカリ"
+        }
+      ],
+      "tickets": []
+    },
+    {
+      "race_key": "06251406",
+      "race_date": "20250112",
+      "is_major_race": false,
+      "meta": {
+        "place_code": "6",
+        "year": "25",
+        "kai": "1",
+        "day": "4",
+        "race_num": "6",
+        "start_time": "1255",
+        "distance": "1200",
+        "track_type": "2",
+        "headcount": "16"
+      },
+      "picks": [
+        {
+          "rank": 1,
+          "horse_num": 1,
+          "pred_ev_place": -0.3240455056754839,
+          "pred_score": 0.6759544943245162,
+          "odds_win": 7.2,
+          "odds_place": 2.4,
+          "horse_name": "マイレーヌ"
+        },
+        {
+          "rank": 2,
+          "horse_num": 2,
+          "pred_ev_place": -0.7746395143792055,
+          "pred_score": 0.2253604856207944,
+          "odds_win": 6.7,
+          "odds_place": 2.3,
+          "horse_name": "ケープアグラス"
+        }
+      ],
+      "tickets": []
+    }
+  ]
+}
