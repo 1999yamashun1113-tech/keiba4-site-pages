@@ -10,7 +10,7 @@ Lightweight Cloudflare Pages deployment repository for the KEIBA4 public site.
 ## Cloudflare Pages settings
 
 - Framework preset: `None`
-- Build command: `exit 0`
+- Build command: leave blank
 - Build output directory: `public`
 
 This repository is intentionally small. It does not include the full research workspace.

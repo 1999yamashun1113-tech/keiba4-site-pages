@@ -9,7 +9,7 @@ It contains only static public site files.
 
 - Framework preset: `None`
 - Production branch: `main`
-- Build command: `exit 0`
+- Build command: leave blank
 - Build output directory: `public`
 
 ## Update flow
