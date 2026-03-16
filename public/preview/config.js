@@ -4,9 +4,9 @@ window.SITE_CONFIG = {
   "premiumEnabled": false,
   "showSourcePath": false,
   "marketingProof": {
-    "headline": "2024年から2025年の振り返りで成績の良かったワイド・三連複を掲載",
-    "note": "公開している馬券候補は、過去データの傾向も参考にしています。",
+    "headline": "高回収率のモデルを使用",
     "validationLabel": "検証期間 2024-2025",
+    "footnote": "※学習期間: 2008-2023年 / テスト期間: 2024-2025年",
     "strategies": [
       {
         "betType": "sanrenpuku",

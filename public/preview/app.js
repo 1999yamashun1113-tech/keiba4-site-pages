@@ -14,8 +14,8 @@ const siteConfig = window.SITE_CONFIG || {
 const els = {
   heroProof: document.getElementById('heroProof'),
   proofHeadline: document.getElementById('proofHeadline'),
-  proofNote: document.getElementById('proofNote'),
   proofGrid: document.getElementById('proofGrid'),
+  proofFootnote: document.getElementById('proofFootnote'),
   raceDate: document.getElementById('raceDate'),
   generatedAt: document.getElementById('generatedAt'),
   raceCount: document.getElementById('raceCount'),
@@ -197,7 +197,6 @@ function renderMarketingProof() {
   }
   els.heroProof.hidden = false;
   els.proofHeadline.textContent = proof.headline || '検証実績';
-  els.proofNote.textContent = proof.note || '';
   els.proofGrid.innerHTML = proof.strategies
     .map(
       (strategy) => `
@@ -209,6 +208,10 @@ function renderMarketingProof() {
       `,
     )
     .join('');
+  if (els.proofFootnote) {
+    els.proofFootnote.hidden = !proof.footnote;
+    els.proofFootnote.textContent = proof.footnote || '';
+  }
 }
 
 function renderSummary(summary, publicPayload, premiumPayload) {
