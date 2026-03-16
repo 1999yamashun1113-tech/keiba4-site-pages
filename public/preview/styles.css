@@ -87,22 +87,27 @@ textarea {
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-size: clamp(1.9rem, 3.7vw, 3.2rem);
   line-height: 1.04;
   max-width: none;
+  white-space: nowrap;
 }
 
 .hero-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
-  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
 }
 
 .stat-card {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
   background: rgba(20, 35, 29, 0.04);
-  border-radius: var(--radius-md);
-  padding: 12px 14px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  min-width: 0;
 }
 
 .stat-label,
@@ -116,15 +121,20 @@ textarea {
   font-size: 0.72rem;
 }
 
+.stat-label {
+  font-size: 0.62rem;
+}
+
 .stat-label,
 .summary-label {
   text-transform: none;
 }
 
 .stat-card strong {
-  display: block;
-  margin-top: 4px;
-  font-size: 1rem;
+  display: inline;
+  margin-top: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
 }
 
 .hero-text {
@@ -622,8 +632,12 @@ textarea {
     padding: 18px;
   }
 
+  .hero h1 {
+    font-size: clamp(1.25rem, 5.2vw, 1.7rem);
+  }
+
   .hero-meta {
-    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .table-head {
