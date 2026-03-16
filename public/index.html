@@ -3,30 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KEIBA4 Site Preview</title>
+    <title>KEIBA4 | 今日の注目レース</title>
     <link rel="stylesheet" href="preview/styles.css" />
   </head>
   <body>
     <div class="page-shell">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">KEIBA4 LOCAL PREVIEW</p>
-          <h1>競馬予測 payload の確認画面</h1>
+          <p class="eyebrow">KEIBA4 PUBLIC SITE</p>
+          <h1>今日の注目レースと公開予想</h1>
           <p class="hero-text">
-            公開用 payload をそのまま読み込み、public と premium の表示差をローカルで確認します。
+            当日の公開データから、注目馬と馬券候補を見やすくまとめて表示します。
           </p>
         </div>
         <div class="hero-panel">
           <div class="stat-card">
-            <span class="stat-label">race date</span>
+            <span class="stat-label">対象日</span>
             <strong id="raceDate">-</strong>
           </div>
           <div class="stat-card">
-            <span class="stat-label">generated</span>
+            <span class="stat-label">更新時刻</span>
             <strong id="generatedAt">-</strong>
           </div>
           <div class="stat-card">
-            <span class="stat-label">races</span>
+            <span class="stat-label">対象レース数</span>
             <strong id="raceCount">-</strong>
           </div>
         </div>
@@ -35,67 +35,67 @@
       <main class="layout">
         <section class="summary-strip" id="summaryStrip">
           <article class="summary-card accent-green" id="summaryCardPublic">
-            <span class="summary-label">public picks</span>
+            <span class="summary-label">公開 pick 数</span>
             <strong id="publicPickTotal">-</strong>
           </article>
           <article class="summary-card accent-gold" id="summaryCardPremium">
-            <span class="summary-label">premium picks</span>
+            <span class="summary-label">premium pick 数</span>
             <strong id="premiumPickTotal">-</strong>
           </article>
           <article class="summary-card accent-ink">
-            <span class="summary-label">ticket races</span>
+            <span class="summary-label">馬券候補あり</span>
             <strong id="ticketRaceCount">-</strong>
           </article>
         </section>
 
         <section class="controls">
-          <div class="mode-switch" role="tablist" aria-label="display mode">
-            <button id="modePublic" class="mode-button is-active" type="button">public</button>
+          <div id="modeSwitch" class="mode-switch" role="tablist" aria-label="display mode">
+            <button id="modePublic" class="mode-button is-active" type="button">公開版</button>
             <button id="modePremium" class="mode-button" type="button">premium</button>
           </div>
           <div class="control-actions">
-            <button id="refreshButton" class="refresh-button" type="button">refresh</button>
-            <div class="status" id="statusText">loading payload...</div>
+            <button id="refreshButton" class="refresh-button" type="button">最新データを再読込</button>
+            <div class="status" id="statusText">データを読み込み中です</div>
           </div>
         </section>
 
         <section class="feature-grid">
           <article class="feature-card feature-primary" id="featuredPickCard">
-            <p class="eyebrow">featured pick</p>
-            <h2>loading...</h2>
-            <p class="feature-copy">public / premium の上位候補から、最も強い評価の馬を表示します。</p>
+            <p class="eyebrow">注目馬</p>
+            <h2>読み込み中です</h2>
+            <p class="feature-copy">その日の公開予想から、評価の高い馬を先頭に表示します。</p>
           </article>
           <article class="feature-card feature-secondary" id="featuredTicketCard">
-            <p class="eyebrow">featured ticket</p>
-            <h2>loading...</h2>
-            <p class="feature-copy">ticket 提案があれば、最も EV が高い組み合わせを表示します。</p>
+            <p class="eyebrow">注目馬券</p>
+            <h2>読み込み中です</h2>
+            <p class="feature-copy">公開対象の中から、期待値の高い馬券候補を表示します。</p>
           </article>
         </section>
 
         <section class="race-nav-section">
           <div class="section-head">
             <h2>レース一覧</h2>
-            <p>選択したレースの picks と tickets を下に表示します。</p>
+            <p>見たいレースを選ぶと、注目馬と馬券候補の詳細を表示します。</p>
           </div>
           <div class="race-nav" id="raceNav"></div>
         </section>
 
         <section class="race-detail" id="raceDetail">
-          <div class="empty-state">payload を読み込み中です。</div>
+          <div class="empty-state">レースデータを読み込み中です。</div>
         </section>
 
         <section class="footer-strip">
-          <div class="footer-card">
-            <span class="summary-label">payload source</span>
+          <div class="footer-card" id="sourceCard">
+            <span class="summary-label">データソース</span>
             <strong id="sourcePath">-</strong>
           </div>
           <div class="footer-card">
-            <span class="summary-label">last refresh</span>
+            <span class="summary-label">最終表示更新</span>
             <strong id="lastRefreshAt">-</strong>
           </div>
           <div class="footer-card">
-            <span class="summary-label">refresh policy</span>
-            <strong>60s auto refresh</strong>
+            <span class="summary-label">更新間隔</span>
+            <strong>60秒ごとに自動更新</strong>
           </div>
         </section>
       </main>

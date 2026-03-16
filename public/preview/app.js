@@ -20,6 +20,7 @@ const els = {
   publicPickTotal: document.getElementById('publicPickTotal'),
   premiumPickTotal: document.getElementById('premiumPickTotal'),
   ticketRaceCount: document.getElementById('ticketRaceCount'),
+  modeSwitch: document.getElementById('modeSwitch'),
   modePublic: document.getElementById('modePublic'),
   modePremium: document.getElementById('modePremium'),
   refreshButton: document.getElementById('refreshButton'),
@@ -28,6 +29,7 @@ const els = {
   featuredTicketCard: document.getElementById('featuredTicketCard'),
   raceNav: document.getElementById('raceNav'),
   raceDetail: document.getElementById('raceDetail'),
+  sourceCard: document.getElementById('sourceCard'),
   sourcePath: document.getElementById('sourcePath'),
   lastRefreshAt: document.getElementById('lastRefreshAt'),
   chipTemplate: document.getElementById('raceChipTemplate'),
@@ -119,7 +121,9 @@ function renderSummary(summary, publicPayload, premiumPayload) {
   els.premiumPickTotal.textContent = siteConfig.premiumEnabled ? String(premiumPickTotal) : 'hidden';
   els.ticketRaceCount.textContent = String(ticketRaceCount);
   els.summaryCardPremium.hidden = !siteConfig.premiumEnabled;
+  els.modeSwitch.hidden = !siteConfig.premiumEnabled;
   els.modePremium.hidden = !siteConfig.premiumEnabled;
+  els.sourceCard.hidden = !siteConfig.showSourcePath;
   els.sourcePath.textContent = siteConfig.showSourcePath ? summary.resolved_dir || '-' : 'not published';
   els.lastRefreshAt.textContent = new Intl.DateTimeFormat('ja-JP', {
     hour: '2-digit',
@@ -164,28 +168,28 @@ function renderFeaturedCards() {
 
   if (featuredPick) {
     els.featuredPickCard.innerHTML = `
-      <p class="eyebrow">featured pick</p>
+      <p class="eyebrow">注目馬</p>
       <h2>${escapeHtml(featuredPick.horse_name || `馬番 ${featuredPick.horse_num}`)}</h2>
       <p class="feature-copy">
         ${escapeHtml(`R${featuredPick.race_num}`)}
         ${featuredPick.race_name ? ` ${escapeHtml(featuredPick.race_name)}` : ''}
       </p>
-      <p class="feature-copy">score ${formatNumber(featuredPick.pred_score, 3)} / place odds ${formatNumber(featuredPick.odds_place, 1)}</p>
+      <p class="feature-copy">予測スコア ${formatNumber(featuredPick.pred_score, 3)} / 複勝オッズ ${formatNumber(featuredPick.odds_place, 1)}</p>
     `;
   }
 
   if (featuredTicket) {
     els.featuredTicketCard.innerHTML = `
-      <p class="eyebrow">featured ticket</p>
+      <p class="eyebrow">注目馬券</p>
       <h2>${escapeHtml(featuredTicket.combo)}</h2>
       <p class="feature-copy">R${escapeHtml(featuredTicket.race_num)} / ${escapeHtml(featuredTicket.bet_type)}</p>
-      <p class="feature-copy">EV ${formatNumber(featuredTicket.ev_est, 2)} / odds ${formatNumber(featuredTicket.est_odds, 1)}</p>
+      <p class="feature-copy">期待値 ${formatNumber(featuredTicket.ev_est, 2)} / 想定オッズ ${formatNumber(featuredTicket.est_odds, 1)}</p>
     `;
   } else {
     els.featuredTicketCard.innerHTML = `
-      <p class="eyebrow">featured ticket</p>
-      <h2>ticket unavailable</h2>
-      <p class="feature-copy">現在の payload では ticket 提案がありません。公開候補のみを確認できます。</p>
+      <p class="eyebrow">注目馬券</p>
+      <h2>公開中の候補はありません</h2>
+      <p class="feature-copy">現在の公開データでは、馬券候補の表示対象がありません。</p>
     `;
   }
 }
@@ -213,12 +217,12 @@ function renderRaceNav() {
 
 function renderMetaPills(race, comparisonRace) {
   const pills = [
-    ['race key', race.race_key],
-    ['start', race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : '-'],
-    ['distance', race.meta?.distance ? `${race.meta.distance}m` : '-'],
-    ['track', race.meta?.track_type ?? '-'],
-    ['headcount', race.meta?.headcount ?? '-'],
-    ['premium diff', comparisonRace ? `+${Math.max(comparisonRace.picks.length - race.picks.length, 0)} picks` : '-'],
+    ['レースID', race.race_key],
+    ['発走', race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : '-'],
+    ['距離', race.meta?.distance ? `${race.meta.distance}m` : '-'],
+    ['コース', race.meta?.track_type ?? '-'],
+    ['頭数', race.meta?.headcount ?? '-'],
+    ['premium差分', comparisonRace ? `+${Math.max(comparisonRace.picks.length - race.picks.length, 0)}件` : '-'],
   ];
 
   return pills
@@ -242,16 +246,16 @@ function renderPickRow(pick) {
         <div class="horse-sub">馬番 ${pick.horse_num}</div>
       </div>
       <div><span class="pick-cell-muted">score</span><br />${formatNumber(pick.pred_score, 3)}</div>
-      <div><span class="pick-cell-muted">ev</span><br />${formatNumber(pick.pred_ev_place, 3)}</div>
-      <div><span class="pick-cell-muted">win</span><br />${formatNumber(pick.odds_win, 1)}</div>
-      <div><span class="pick-cell-muted">place</span><br />${formatNumber(pick.odds_place, 1)}</div>
+      <div><span class="pick-cell-muted">期待値</span><br />${formatNumber(pick.pred_ev_place, 3)}</div>
+      <div><span class="pick-cell-muted">単勝</span><br />${formatNumber(pick.odds_win, 1)}</div>
+      <div><span class="pick-cell-muted">複勝</span><br />${formatNumber(pick.odds_place, 1)}</div>
     </div>
   `;
 }
 
 function renderTickets(tickets) {
   if (!tickets.length) {
-    return '<div class="empty-state">このレースには ticket 提案がありません。</div>';
+    return '<div class="empty-state">このレースでは公開中の馬券候補がありません。</div>';
   }
   return `
     <div class="ticket-list">
@@ -261,10 +265,10 @@ function renderTickets(tickets) {
             <article class="ticket-card">
               <small>${ticket.bet_type}</small>
               <strong>${ticket.combo}</strong>
-              <p>${ticket.strategy ? escapeHtml(ticket.strategy) : 'public release ticket'}</p>
+              <p>${ticket.strategy ? escapeHtml(ticket.strategy) : '公開版の推奨候補'}</p>
               <div class="ticket-metrics">
-                <span>ev ${formatNumber(ticket.ev_est, 2)}</span>
-                <span>odds ${formatNumber(ticket.est_odds, 1)}</span>
+                <span>期待値 ${formatNumber(ticket.ev_est, 2)}</span>
+                <span>想定オッズ ${formatNumber(ticket.est_odds, 1)}</span>
               </div>
             </article>
           `,
@@ -289,42 +293,42 @@ function renderRaceDetail() {
   const title = race.meta?.race_name ? `${raceNum} ${race.meta.race_name}` : raceNum;
   const modeNote =
     !siteConfig.premiumEnabled
-      ? 'public release 用の表示です。premium データや内部パスは公開していません。'
+      ? '公開版の表示です。会員向けデータや内部情報はこのサイトには掲載していません。'
       : state.mode === 'public'
-      ? `public payload を表示中。premium では ${Math.max((comparisonRace?.picks.length || 0) - race.picks.length, 0)} 件の追加 pick が見えます。`
-      : `premium payload を表示中。public と同じ race 順のまま、より深い pick を確認できます。`;
+      ? `公開版を表示中です。premium では ${Math.max((comparisonRace?.picks.length || 0) - race.picks.length, 0)} 件の追加 pick を確認できます。`
+      : `premium を表示中です。公開版と同じ順序で、より詳細な pick を確認できます。`;
 
   els.raceDetail.innerHTML = `
     <div class="fade-in">
       <div class="detail-head">
         <div>
-          <p class="eyebrow">${state.mode} payload</p>
+          <p class="eyebrow">${state.mode === 'public' ? '公開版' : 'premium'}</p>
           <h2>${title}</h2>
           <p class="detail-subline">${modeNote}</p>
         </div>
-        <div class="mode-note">${race.is_major_race ? 'major race' : 'standard race'}</div>
+        <div class="mode-note">${race.is_major_race ? '注目レース' : '通常レース'}</div>
       </div>
 
       <div class="detail-tags">${renderMetaPills(race, comparisonRace)}</div>
 
       <div class="section-split">
         <section class="picks-section">
-          <h3>picks</h3>
+          <h3>注目馬</h3>
           <div class="picks-table">
             <div class="table-head">
-              <span>rank</span>
-              <span>horse</span>
+              <span>順位</span>
+              <span>馬名</span>
               <span>score</span>
-              <span>ev</span>
-              <span>win</span>
-              <span>place</span>
+              <span>期待値</span>
+              <span>単勝</span>
+              <span>複勝</span>
             </div>
             ${race.picks.map(renderPickRow).join('')}
           </div>
         </section>
 
         <section class="ticket-section">
-          <h3>tickets</h3>
+          <h3>馬券候補</h3>
           ${renderTickets(race.tickets)}
         </section>
       </div>
@@ -347,7 +351,7 @@ function setMode(mode) {
 async function load() {
   try {
     els.refreshButton.disabled = true;
-    els.statusText.textContent = 'loading payload...';
+    els.statusText.textContent = 'データを読み込み中です';
     const requests = [
       api(dataPath('public_payload')),
       api(dataPath('summary')),
@@ -369,9 +373,9 @@ async function load() {
     renderFeaturedCards();
     renderRaceNav();
     renderRaceDetail();
-    els.statusText.textContent = 'payload ready';
+    els.statusText.textContent = '最新データを表示しています';
   } catch (error) {
-    els.statusText.textContent = 'payload unavailable';
+    els.statusText.textContent = 'データを取得できませんでした';
     els.raceDetail.innerHTML = `<div class="empty-state">${escapeHtml(error.message)}</div>`;
   } finally {
     els.refreshButton.disabled = false;
