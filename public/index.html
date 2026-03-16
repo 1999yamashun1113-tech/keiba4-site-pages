@@ -3,63 +3,68 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KEIBA4 | 今日の注目レース</title>
+    <title>競馬ピックナビ | 今日の注目レースと公開予想</title>
     <link rel="stylesheet" href="preview/styles.css" />
   </head>
   <body>
     <div class="page-shell">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">KEIBA4 PUBLIC SITE</p>
-          <h1>今日の注目レースと公開予想</h1>
+          <div class="hero-header">
+            <p class="eyebrow">競馬ピックナビ</p>
+            <h1>今日の注目レースと公開予想</h1>
+          </div>
+          <div class="hero-meta">
+            <div class="stat-card">
+              <span class="stat-label">対象日</span>
+              <strong id="raceDate">-</strong>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">更新時刻</span>
+              <strong id="generatedAt">-</strong>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">対象レース数</span>
+              <strong id="raceCount">-</strong>
+            </div>
+          </div>
           <p class="hero-text">
             当日の公開データから、注目馬と馬券候補を見やすくまとめて表示します。
           </p>
           <section class="hero-proof" id="heroProof">
             <div class="proof-copy">
               <p class="proof-kicker">検証実績</p>
-              <strong id="proofHeadline">2024-2025固定検証で回収率100%超のワイド・三連複戦略を掲載</strong>
-              <p class="proof-note" id="proofNote">Place-EVモデルの出力をもとにした公開馬券候補です。</p>
+              <strong id="proofHeadline">過去データの振り返りで成績の良かった券種を掲載</strong>
+              <p class="proof-note" id="proofNote">公開している馬券候補は、過去データの傾向も参考にしています。</p>
             </div>
             <div class="proof-grid" id="proofGrid"></div>
           </section>
-        </div>
-        <div class="hero-panel">
-          <div class="stat-card">
-            <span class="stat-label">対象日</span>
-            <strong id="raceDate">-</strong>
-          </div>
-          <div class="stat-card">
-            <span class="stat-label">更新時刻</span>
-            <strong id="generatedAt">-</strong>
-          </div>
-          <div class="stat-card">
-            <span class="stat-label">対象レース数</span>
-            <strong id="raceCount">-</strong>
-          </div>
         </div>
       </header>
 
       <main class="layout">
         <section class="summary-strip" id="summaryStrip">
           <article class="summary-card accent-green" id="summaryCardPublic">
-            <span class="summary-label">公開 pick 数</span>
+            <span class="summary-label">無料版の注目馬数</span>
             <strong id="publicPickTotal">-</strong>
+            <p class="summary-note">無料版で表示している注目馬の合計です。</p>
           </article>
           <article class="summary-card accent-gold" id="summaryCardPremium">
-            <span class="summary-label">premium pick 数</span>
+            <span class="summary-label">premiumプランの注目馬数</span>
             <strong id="premiumPickTotal">-</strong>
+            <p class="summary-note">premiumプランで表示している注目馬の合計です。</p>
           </article>
           <article class="summary-card accent-ink">
-            <span class="summary-label">馬券候補あり</span>
-            <strong id="ticketRaceCount">-</strong>
+            <span class="summary-label">公開中の馬券候補数</span>
+            <strong id="ticketTotal">-</strong>
+            <p class="summary-note">全レースで表示している組み合わせの合計です。</p>
           </article>
         </section>
 
         <section class="controls">
           <div id="modeSwitch" class="mode-switch" role="tablist" aria-label="display mode">
-            <button id="modePublic" class="mode-button is-active" type="button">公開版</button>
-            <button id="modePremium" class="mode-button" type="button">premium</button>
+            <button id="modePublic" class="mode-button is-active" type="button">無料版</button>
+            <button id="modePremium" class="mode-button" type="button">premiumプラン</button>
           </div>
           <div class="control-actions">
             <button id="refreshButton" class="refresh-button" type="button">最新データを再読込</button>
@@ -93,10 +98,6 @@
         </section>
 
         <section class="footer-strip">
-          <div class="footer-card" id="sourceCard">
-            <span class="summary-label">データソース</span>
-            <strong id="sourcePath">-</strong>
-          </div>
           <div class="footer-card">
             <span class="summary-label">最終表示更新</span>
             <strong id="lastRefreshAt">-</strong>

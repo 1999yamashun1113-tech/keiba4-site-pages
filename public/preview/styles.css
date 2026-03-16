@@ -46,14 +46,10 @@ textarea {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
-  gap: 18px;
-  align-items: stretch;
+  display: block;
 }
 
 .hero-copy,
-.hero-panel,
 .summary-card,
 .controls,
 .race-nav-section,
@@ -67,6 +63,11 @@ textarea {
 .hero-copy {
   padding: 28px;
   border-radius: var(--radius-lg);
+}
+
+.hero-header {
+  display: grid;
+  gap: 6px;
 }
 
 .eyebrow {
@@ -86,9 +87,44 @@ textarea {
 }
 
 .hero h1 {
-  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   line-height: 1.04;
-  max-width: 11ch;
+  max-width: none;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.stat-card {
+  background: rgba(20, 35, 29, 0.04);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.stat-label,
+.summary-label,
+.meta-label,
+.table-head span,
+.ticket-card small {
+  display: block;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+}
+
+.stat-label,
+.summary-label {
+  text-transform: none;
+}
+
+.stat-card strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1rem;
 }
 
 .hero-text {
@@ -164,38 +200,6 @@ textarea {
   font-size: 0.92rem;
 }
 
-.hero-panel {
-  border-radius: var(--radius-lg);
-  padding: 18px;
-  display: grid;
-  gap: 12px;
-}
-
-.stat-card {
-  background: rgba(20, 35, 29, 0.04);
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
-}
-
-.stat-label,
-.summary-label,
-.meta-label,
-.table-head span,
-.ticket-card small {
-  display: block;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.72rem;
-}
-
-.stat-card strong,
-.summary-card strong {
-  display: block;
-  margin-top: 6px;
-  font-size: 1.4rem;
-}
-
 .layout {
   display: grid;
   gap: 18px;
@@ -219,12 +223,24 @@ textarea {
 }
 
 .footer-strip {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .summary-card {
   padding: 18px 20px;
   border-radius: var(--radius-md);
+}
+
+.summary-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.8rem;
+}
+
+.summary-note {
+  margin: 10px 0 0;
+  line-height: 1.55;
+  font-size: 0.92rem;
 }
 
 .accent-green {
@@ -246,6 +262,12 @@ textarea {
 .accent-gold .summary-label,
 .accent-ink .summary-label {
   color: rgba(255, 255, 255, 0.72);
+}
+
+.accent-green .summary-note,
+.accent-gold .summary-note,
+.accent-ink .summary-note {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .controls {
@@ -561,7 +583,6 @@ textarea {
 }
 
 @media (max-width: 900px) {
-  .hero,
   .summary-strip,
   .feature-grid,
   .footer-strip,
@@ -570,7 +591,6 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .hero,
   .summary-strip {
     display: grid;
   }
@@ -597,10 +617,13 @@ textarea {
   }
 
   .hero-copy,
-  .hero-panel,
   .race-nav-section,
   .race-detail {
     padding: 18px;
+  }
+
+  .hero-meta {
+    grid-template-columns: 1fr;
   }
 
   .table-head {

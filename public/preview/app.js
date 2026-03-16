@@ -4,11 +4,11 @@ const state = {
   payloads: null,
 };
 
-const siteConfig = window.KEIBA4_SITE_CONFIG || {
+const siteConfig = window.SITE_CONFIG || {
   mode: 'server',
   dataBase: '/api/site-payload',
   premiumEnabled: true,
-  showSourcePath: true,
+  showSourcePath: false,
 };
 
 const els = {
@@ -23,7 +23,7 @@ const els = {
   summaryCardPremium: document.getElementById('summaryCardPremium'),
   publicPickTotal: document.getElementById('publicPickTotal'),
   premiumPickTotal: document.getElementById('premiumPickTotal'),
-  ticketRaceCount: document.getElementById('ticketRaceCount'),
+  ticketTotal: document.getElementById('ticketTotal'),
   modeSwitch: document.getElementById('modeSwitch'),
   modePublic: document.getElementById('modePublic'),
   modePremium: document.getElementById('modePremium'),
@@ -33,8 +33,6 @@ const els = {
   featuredTicketCard: document.getElementById('featuredTicketCard'),
   raceNav: document.getElementById('raceNav'),
   raceDetail: document.getElementById('raceDetail'),
-  sourceCard: document.getElementById('sourceCard'),
-  sourcePath: document.getElementById('sourcePath'),
   lastRefreshAt: document.getElementById('lastRefreshAt'),
   chipTemplate: document.getElementById('raceChipTemplate'),
 };
@@ -81,6 +79,14 @@ function formatTimestamp(value) {
     minute: '2-digit',
     timeZone: 'Asia/Tokyo',
   }).format(date);
+}
+
+function formatRaceDate(value) {
+  const token = String(value || '').trim();
+  if (!/^\d{8}$/.test(token)) {
+    return value || '-';
+  }
+  return `${token.slice(0, 4)}/${token.slice(4, 6)}/${token.slice(6, 8)}`;
 }
 
 function formatNumber(value, digits = 2) {
@@ -172,7 +178,7 @@ function ticketHorseMeta(ticket, racePicks = []) {
 
 function formatRaceLabel(race) {
   const raceNum = race.meta?.race_num ? `R${race.meta.race_num}` : race.race_key;
-  const start = race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : 'time ?';
+  const start = race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : '時刻未定';
   return { title: raceNum, meta: start };
 }
 
@@ -209,19 +215,17 @@ function renderSummary(summary, publicPayload, premiumPayload) {
   const publicPickTotal = publicPayload.races.reduce((sum, race) => sum + race.picks.length, 0);
   const premiumBase = premiumPayload || publicPayload;
   const premiumPickTotal = premiumBase.races.reduce((sum, race) => sum + race.picks.length, 0);
-  const ticketRaceCount = publicPayload.races.filter((race) => race.tickets.length > 0).length;
+  const ticketTotal = publicPayload.races.reduce((sum, race) => sum + race.tickets.length, 0);
 
-  els.raceDate.textContent = summary.race_date || '-';
+  els.raceDate.textContent = formatRaceDate(summary.race_date);
   els.generatedAt.textContent = formatTimestamp(summary.generated_at_utc);
   els.raceCount.textContent = String(summary.public_race_count || 0);
   els.publicPickTotal.textContent = String(publicPickTotal);
   els.premiumPickTotal.textContent = siteConfig.premiumEnabled ? String(premiumPickTotal) : 'hidden';
-  els.ticketRaceCount.textContent = String(ticketRaceCount);
+  els.ticketTotal.textContent = String(ticketTotal);
   els.summaryCardPremium.hidden = !siteConfig.premiumEnabled;
   els.modeSwitch.hidden = !siteConfig.premiumEnabled;
   els.modePremium.hidden = !siteConfig.premiumEnabled;
-  els.sourceCard.hidden = !siteConfig.showSourcePath;
-  els.sourcePath.textContent = siteConfig.showSourcePath ? summary.resolved_dir || '-' : 'not published';
   els.lastRefreshAt.textContent = new Intl.DateTimeFormat('ja-JP', {
     hour: '2-digit',
     minute: '2-digit',
@@ -273,7 +277,7 @@ function renderFeaturedCards() {
         ${escapeHtml(`R${featuredPick.race_num}`)}
         ${featuredPick.race_name ? ` ${escapeHtml(featuredPick.race_name)}` : ''}
       </p>
-      <p class="feature-copy">予測スコア ${formatNumber(featuredPick.pred_score, 3)} / 複勝オッズ ${formatNumber(featuredPick.odds_place, 1)}</p>
+      <p class="feature-copy">注目度 ${formatNumber(featuredPick.pred_score, 3)} / 複勝オッズ ${formatNumber(featuredPick.odds_place, 1)}</p>
     `;
   }
 
@@ -322,7 +326,6 @@ function renderMetaPills(race, comparisonRace) {
     ['距離', race.meta?.distance ? `${race.meta.distance}m` : '-'],
     ['コース', race.meta?.track_type ?? '-'],
     ['頭数', race.meta?.headcount ?? '-'],
-    ['premium差分', comparisonRace ? `+${Math.max(comparisonRace.picks.length - race.picks.length, 0)}件` : '-'],
   ];
 
   return pills
@@ -345,7 +348,7 @@ function renderPickRow(pick) {
         <div class="horse-main">${pick.horse_name || 'horse name unavailable'}</div>
         <div class="horse-sub">馬番 ${pick.horse_num}</div>
       </div>
-      <div><span class="pick-cell-muted">score</span><br />${formatNumber(pick.pred_score, 3)}</div>
+      <div><span class="pick-cell-muted">注目度</span><br />${formatNumber(pick.pred_score, 3)}</div>
       <div><span class="pick-cell-muted">期待値</span><br />${formatNumber(pick.pred_ev_place, 3)}</div>
       <div><span class="pick-cell-muted">単勝</span><br />${formatNumber(pick.odds_win, 1)}</div>
       <div><span class="pick-cell-muted">複勝</span><br />${formatNumber(pick.odds_place, 1)}</div>
@@ -393,16 +396,16 @@ function renderRaceDetail() {
   const title = race.meta?.race_name ? `${raceNum} ${race.meta.race_name}` : raceNum;
   const modeNote =
     !siteConfig.premiumEnabled
-      ? '公開版の表示です。2024-2025固定検証で回収率100%超だったワイド・三連複戦略の出力のみ掲載しています。'
+      ? '無料版の表示です。公開している注目馬と馬券候補を確認できます。'
       : state.mode === 'public'
-      ? `公開版を表示中です。premium では ${Math.max((comparisonRace?.picks.length || 0) - race.picks.length, 0)} 件の追加 pick を確認できます。`
-      : `premium を表示中です。公開版と同じ順序で、より詳細な pick を確認できます。`;
+      ? `無料版を表示中です。premiumプランでは ${Math.max((comparisonRace?.picks.length || 0) - race.picks.length, 0)} 頭ぶん多く注目馬を確認できます。`
+      : 'premiumプランを表示中です。無料版より詳しい注目馬を確認できます。';
 
   els.raceDetail.innerHTML = `
     <div class="fade-in">
       <div class="detail-head">
         <div>
-          <p class="eyebrow">${state.mode === 'public' ? '公開版' : 'premium'}</p>
+          <p class="eyebrow">${state.mode === 'public' ? '無料版' : 'premiumプラン'}</p>
           <h2>${title}</h2>
           <p class="detail-subline">${modeNote}</p>
         </div>
@@ -418,7 +421,7 @@ function renderRaceDetail() {
             <div class="table-head">
               <span>順位</span>
               <span>馬名</span>
-              <span>score</span>
+              <span>注目度</span>
               <span>期待値</span>
               <span>単勝</span>
               <span>複勝</span>
