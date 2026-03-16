@@ -98,6 +98,72 @@ textarea {
   line-height: 1.7;
 }
 
+.hero-proof {
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: rgba(20, 35, 29, 0.05);
+  border: 1px solid rgba(20, 35, 29, 0.08);
+}
+
+.proof-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.proof-kicker {
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.proof-copy strong {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.proof-note {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.proof-card {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 252, 246, 0.84);
+  border: 1px solid rgba(20, 35, 29, 0.08);
+}
+
+.proof-label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-card strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.5rem;
+}
+
+.proof-card p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .hero-panel {
   border-radius: var(--radius-lg);
   padding: 18px;
@@ -517,6 +583,10 @@ textarea {
 
   .controls > * + * {
     margin-top: 12px;
+  }
+
+  .proof-grid {
+    grid-template-columns: 1fr;
   }
 }
 

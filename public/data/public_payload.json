@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-02-28T10:15:38Z",
+  "generated_at_utc": "2026-03-16T03:41:35Z",
   "race_date": "20250112",
   "races": [
     {
@@ -189,13 +189,37 @@
           "bet_type": "sanrenpuku",
           "combo": "121416",
           "ev_est": 4.430463433214732,
-          "est_odds": 46944.24474484894
+          "est_odds": 46944.24474484894,
+          "horses": [
+            {
+              "horse_num": 12,
+              "horse_name": "パワーオブドリーム"
+            },
+            {
+              "horse_num": 14,
+              "horse_name": "ステイアンビシャス"
+            },
+            {
+              "horse_num": 16,
+              "horse_name": "ニシノフローレス"
+            }
+          ]
         },
         {
           "bet_type": "wide",
           "combo": "1216",
           "ev_est": 4.271256971449724,
-          "est_odds": 6488.314257164173
+          "est_odds": 6488.314257164173,
+          "horses": [
+            {
+              "horse_num": 12,
+              "horse_name": "パワーオブドリーム"
+            },
+            {
+              "horse_num": 16,
+              "horse_name": "ニシノフローレス"
+            }
+          ]
         }
       ]
     },

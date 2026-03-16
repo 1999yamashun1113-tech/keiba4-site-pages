@@ -12,6 +12,10 @@ const siteConfig = window.KEIBA4_SITE_CONFIG || {
 };
 
 const els = {
+  heroProof: document.getElementById('heroProof'),
+  proofHeadline: document.getElementById('proofHeadline'),
+  proofNote: document.getElementById('proofNote'),
+  proofGrid: document.getElementById('proofGrid'),
   raceDate: document.getElementById('raceDate'),
   generatedAt: document.getElementById('generatedAt'),
   raceCount: document.getElementById('raceCount'),
@@ -95,6 +99,77 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+function betTypeLabel(betType) {
+  const labels = {
+    wide: 'ワイド',
+    sanrenpuku: '三連複',
+  };
+  return labels[betType] || betType || '-';
+}
+
+function formatPercent(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) {
+    return '-';
+  }
+  return `${(Number(value) * 100).toFixed(1)}%`;
+}
+
+function parseTicketCombo(ticket) {
+  const combo = String(ticket?.combo || '').trim();
+  if (!combo) {
+    return [];
+  }
+  if (combo.includes('-') || combo.includes(' ') || combo.includes('/')) {
+    return Array.from(combo.matchAll(/\d+/g), (match) => Number(match[0])).filter((horseNum) => horseNum > 0);
+  }
+  if (/^\d+$/.test(combo)) {
+    const expectedCount = { wide: 2, sanrenpuku: 3 }[ticket?.bet_type] || 0;
+    if (expectedCount > 0 && combo.length === expectedCount * 2) {
+      const vals = [];
+      for (let idx = 0; idx < combo.length; idx += 2) {
+        vals.push(Number(combo.slice(idx, idx + 2)));
+      }
+      return vals.filter((horseNum) => horseNum > 0);
+    }
+  }
+  return [];
+}
+
+function ticketHorses(ticket, racePicks = []) {
+  if (Array.isArray(ticket?.horses) && ticket.horses.length) {
+    return ticket.horses;
+  }
+  const nameMap = new Map((racePicks || []).map((pick) => [pick.horse_num, pick.horse_name]));
+  return parseTicketCombo(ticket).map((horseNum) => {
+    const horse = { horse_num: horseNum };
+    const horseName = nameMap.get(horseNum);
+    if (horseName) {
+      horse.horse_name = horseName;
+    }
+    return horse;
+  });
+}
+
+function ticketHorseLabel(ticket, racePicks = []) {
+  const horses = ticketHorses(ticket, racePicks);
+  if (!horses.length) {
+    return ticket.combo || '-';
+  }
+  return horses
+    .map((horse) => horse.horse_name || `馬番 ${horse.horse_num}`)
+    .join(' × ');
+}
+
+function ticketHorseMeta(ticket, racePicks = []) {
+  const horses = ticketHorses(ticket, racePicks);
+  if (!horses.length) {
+    return ticket.combo || '-';
+  }
+  return horses
+    .map((horse) => (horse.horse_name ? `${horse.horse_num} ${horse.horse_name}` : `馬番 ${horse.horse_num}`))
+    .join(' / ');
+}
+
 function formatRaceLabel(race) {
   const raceNum = race.meta?.race_num ? `R${race.meta.race_num}` : race.race_key;
   const start = race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : 'time ?';
@@ -106,6 +181,28 @@ function getRaceByKey(payload, raceKey) {
     return null;
   }
   return payload.races.find((race) => race.race_key === raceKey) || null;
+}
+
+function renderMarketingProof() {
+  const proof = siteConfig.marketingProof;
+  if (!proof || !Array.isArray(proof.strategies) || !proof.strategies.length) {
+    els.heroProof.hidden = true;
+    return;
+  }
+  els.heroProof.hidden = false;
+  els.proofHeadline.textContent = proof.headline || '検証実績';
+  els.proofNote.textContent = proof.note || '';
+  els.proofGrid.innerHTML = proof.strategies
+    .map(
+      (strategy) => `
+        <article class="proof-card">
+          <span class="proof-label">${escapeHtml(strategy.label || betTypeLabel(strategy.betType))}</span>
+          <strong>${escapeHtml(formatPercent(strategy.roi))}</strong>
+          <p>${escapeHtml(proof.validationLabel || '')} / ${escapeHtml(String(strategy.ticketCount || 0))}件</p>
+        </article>
+      `,
+    )
+    .join('');
 }
 
 function renderSummary(summary, publicPayload, premiumPayload) {
@@ -152,6 +249,8 @@ function topTicketFrom(payload) {
       ...ticket,
       race_key: race.race_key,
       race_num: race.meta?.race_num || race.race_key,
+      race_name: race.meta?.race_name || '',
+      race_picks: race.picks,
     })),
   );
   tickets.sort((left, right) => Number(right.ev_est) - Number(left.ev_est));
@@ -181,8 +280,9 @@ function renderFeaturedCards() {
   if (featuredTicket) {
     els.featuredTicketCard.innerHTML = `
       <p class="eyebrow">注目馬券</p>
-      <h2>${escapeHtml(featuredTicket.combo)}</h2>
-      <p class="feature-copy">R${escapeHtml(featuredTicket.race_num)} / ${escapeHtml(featuredTicket.bet_type)}</p>
+      <h2>${escapeHtml(ticketHorseLabel(featuredTicket, featuredTicket.race_picks))}</h2>
+      <p class="feature-copy">R${escapeHtml(featuredTicket.race_num)} / ${escapeHtml(betTypeLabel(featuredTicket.bet_type))}</p>
+      <p class="feature-copy">${escapeHtml(ticketHorseMeta(featuredTicket, featuredTicket.race_picks))}</p>
       <p class="feature-copy">期待値 ${formatNumber(featuredTicket.ev_est, 2)} / 想定オッズ ${formatNumber(featuredTicket.est_odds, 1)}</p>
     `;
   } else {
@@ -253,7 +353,7 @@ function renderPickRow(pick) {
   `;
 }
 
-function renderTickets(tickets) {
+function renderTickets(tickets, racePicks = []) {
   if (!tickets.length) {
     return '<div class="empty-state">このレースでは公開中の馬券候補がありません。</div>';
   }
@@ -263,9 +363,9 @@ function renderTickets(tickets) {
         .map(
           (ticket) => `
             <article class="ticket-card">
-              <small>${ticket.bet_type}</small>
-              <strong>${ticket.combo}</strong>
-              <p>${ticket.strategy ? escapeHtml(ticket.strategy) : '公開版の推奨候補'}</p>
+              <small>${escapeHtml(betTypeLabel(ticket.bet_type))}</small>
+              <strong>${escapeHtml(ticketHorseLabel(ticket, racePicks))}</strong>
+              <p>${escapeHtml(ticketHorseMeta(ticket, racePicks))}</p>
               <div class="ticket-metrics">
                 <span>期待値 ${formatNumber(ticket.ev_est, 2)}</span>
                 <span>想定オッズ ${formatNumber(ticket.est_odds, 1)}</span>
@@ -293,7 +393,7 @@ function renderRaceDetail() {
   const title = race.meta?.race_name ? `${raceNum} ${race.meta.race_name}` : raceNum;
   const modeNote =
     !siteConfig.premiumEnabled
-      ? '公開版の表示です。会員向けデータや内部情報はこのサイトには掲載していません。'
+      ? '公開版の表示です。2024-2025固定検証で回収率100%超だったワイド・三連複戦略の出力のみ掲載しています。'
       : state.mode === 'public'
       ? `公開版を表示中です。premium では ${Math.max((comparisonRace?.picks.length || 0) - race.picks.length, 0)} 件の追加 pick を確認できます。`
       : `premium を表示中です。公開版と同じ順序で、より詳細な pick を確認できます。`;
@@ -329,7 +429,7 @@ function renderRaceDetail() {
 
         <section class="ticket-section">
           <h3>馬券候補</h3>
-          ${renderTickets(race.tickets)}
+          ${renderTickets(race.tickets, race.picks)}
         </section>
       </div>
     </div>
@@ -386,5 +486,6 @@ els.modePublic.addEventListener('click', () => setMode('public'));
 els.modePremium.addEventListener('click', () => setMode('premium'));
 els.refreshButton.addEventListener('click', () => load());
 
+renderMarketingProof();
 load();
 refreshTimer = window.setInterval(load, 60_000);
