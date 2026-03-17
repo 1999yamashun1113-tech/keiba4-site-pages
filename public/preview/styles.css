@@ -223,6 +223,111 @@ textarea {
   gap: 16px;
 }
 
+.offer-shell {
+  padding: 22px 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 252, 246, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow);
+}
+
+.offer-head {
+  align-items: center;
+}
+
+.offer-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 116px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(20, 35, 29, 0.08);
+  color: var(--green);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.offer-card {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(20, 35, 29, 0.08);
+}
+
+.offer-card h3 {
+  margin: 0;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.45;
+}
+
+.offer-card-free {
+  background: linear-gradient(180deg, rgba(15, 90, 67, 0.08), rgba(255, 255, 255, 0.86));
+}
+
+.offer-card-premium {
+  background: linear-gradient(180deg, rgba(179, 134, 45, 0.16), rgba(255, 255, 255, 0.9));
+}
+
+.offer-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 16px 0 0;
+}
+
+.offer-price strong {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.offer-price span {
+  color: var(--muted);
+}
+
+.offer-list {
+  margin: 16px 0 0;
+  padding-left: 20px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.offer-note {
+  margin: 16px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.site-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(20, 35, 29, 0.08);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-links a,
+.policy-back a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.site-links a:hover,
+.policy-back a:hover {
+  text-decoration: underline;
+}
+
 .feature-grid,
 .footer-strip {
   display: grid;
@@ -582,6 +687,77 @@ textarea {
   animation: rise 300ms ease;
 }
 
+.policy-page {
+  padding-top: 24px;
+}
+
+.policy-shell {
+  background: var(--bg-panel);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.policy-hero h1,
+.policy-section h2 {
+  margin: 0;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+}
+
+.policy-hero p {
+  margin: 12px 0 0;
+  max-width: 64ch;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.policy-section + .policy-section {
+  margin-top: 22px;
+}
+
+.policy-section h2 {
+  font-size: 1.2rem;
+}
+
+.policy-section p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.policy-list {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.policy-table {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.policy-table > div {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(20, 35, 29, 0.05);
+  border: 1px solid rgba(20, 35, 29, 0.06);
+}
+
+.policy-table strong {
+  display: block;
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+.policy-back {
+  margin: 28px 0 0;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -595,6 +771,8 @@ textarea {
 
 @media (max-width: 900px) {
   .summary-strip,
+  .offer-grid,
+  .policy-table,
   .feature-grid,
   .footer-strip,
   .section-head,
@@ -618,6 +796,10 @@ textarea {
 
   .proof-grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-links {
+    display: grid;
   }
 }
 
