@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-WORKSPACE_REPO="${WORKSPACE_REPO:-/Users/gotoushunki/keiba4/workspace_jrdb}"
 WORKSPACE_PAYLOAD_DIR="${WORKSPACE_PAYLOAD_DIR:-}"
 DEPLOY_REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+DEFAULT_WORKSPACE_REPO="${DEPLOY_REPO_ROOT}/../workspace_jrdb"
+WORKSPACE_REPO="${WORKSPACE_REPO:-${DEFAULT_WORKSPACE_REPO}}"
 
 cd "$WORKSPACE_REPO"
 if [[ -n "$WORKSPACE_PAYLOAD_DIR" ]]; then
