@@ -144,6 +144,34 @@ textarea {
   line-height: 1.7;
 }
 
+.publication-status {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(15, 90, 67, 0.09);
+  border: 1px solid rgba(15, 90, 67, 0.14);
+}
+
+.publication-kicker {
+  margin: 0;
+  color: var(--green);
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.publication-status strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.05rem;
+}
+
+.publication-status p:last-child {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .hero-proof {
   margin-top: 22px;
   padding: 18px;

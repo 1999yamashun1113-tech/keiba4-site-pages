@@ -20,6 +20,9 @@ const siteConfig = window.SITE_CONFIG || {
 };
 
 const els = {
+  publicationStatus: document.getElementById('publicationStatus'),
+  publicationHeadline: document.getElementById('publicationHeadline'),
+  publicationMessage: document.getElementById('publicationMessage'),
   heroProof: document.getElementById('heroProof'),
   proofHeadline: document.getElementById('proofHeadline'),
   proofGrid: document.getElementById('proofGrid'),
@@ -142,6 +145,14 @@ function premiumAvailable() {
   return Boolean(siteConfig.premiumEnabled || (state.member && state.member.hasAccess && state.payloads?.premium));
 }
 
+function publicationStatusConfig() {
+  const status = siteConfig.publicationStatus || {};
+  if (!status || (!status.headline && !status.message && !status.displayRaceDate && !status.checkedAtUtc)) {
+    return null;
+  }
+  return status;
+}
+
 function formatPercent(value) {
   if (value === null || value === undefined || Number.isNaN(Number(value))) {
     return '-';
@@ -243,14 +254,31 @@ function renderMarketingProof() {
   }
 }
 
+function renderPublicationStatus() {
+  const status = publicationStatusConfig();
+  if (!els.publicationStatus) {
+    return;
+  }
+  if (!status || (!status.headline && !status.message)) {
+    els.publicationStatus.hidden = true;
+    return;
+  }
+  els.publicationStatus.hidden = false;
+  els.publicationHeadline.textContent = status.headline || '';
+  els.publicationMessage.textContent = status.message || '';
+}
+
 function renderSummary(summary, publicPayload, premiumPayload) {
   const publicPickTotal = publicPayload.races.reduce((sum, race) => sum + race.picks.length, 0);
   const premiumBase = premiumPayload || publicPayload;
   const premiumPickTotal = premiumBase.races.reduce((sum, race) => sum + race.picks.length, 0);
   const ticketTotal = publicPayload.races.reduce((sum, race) => sum + race.tickets.length, 0);
+  const publicationStatus = publicationStatusConfig();
+  const displayRaceDate = publicationStatus?.displayRaceDate || summary.race_date;
+  const displayUpdatedAt = publicationStatus?.checkedAtUtc || summary.generated_at_utc;
 
-  els.raceDate.textContent = formatRaceDate(summary.race_date);
-  els.generatedAt.textContent = formatTimestamp(summary.generated_at_utc);
+  els.raceDate.textContent = formatRaceDate(displayRaceDate);
+  els.generatedAt.textContent = formatTimestamp(displayUpdatedAt);
   els.raceCount.textContent = String(summary.public_race_count || 0);
   els.publicPickTotal.textContent = String(publicPickTotal);
   els.premiumPickTotal.textContent = premiumAvailable() ? String(premiumPickTotal) : 'hidden';
@@ -542,5 +570,6 @@ els.modePremium.addEventListener('click', () => setMode('premium'));
 els.refreshButton.addEventListener('click', () => load());
 
 renderMarketingProof();
+renderPublicationStatus();
 load();
 refreshTimer = window.setInterval(load, 60_000);
