@@ -26,6 +26,7 @@ const els = {
   publicationMessage: document.getElementById('publicationMessage'),
   heroProof: document.getElementById('heroProof'),
   proofHeadline: document.getElementById('proofHeadline'),
+  proofDescription: document.getElementById('proofDescription'),
   proofGrid: document.getElementById('proofGrid'),
   proofFootnote: document.getElementById('proofFootnote'),
   raceDate: document.getElementById('raceDate'),
@@ -246,6 +247,10 @@ function renderMarketingProof() {
   }
   els.heroProof.hidden = false;
   els.proofHeadline.textContent = proof.headline || '検証実績';
+  if (els.proofDescription) {
+    els.proofDescription.hidden = !proof.description;
+    els.proofDescription.textContent = proof.description || '';
+  }
   els.proofGrid.innerHTML = proof.strategies
     .map(
       (strategy) => `

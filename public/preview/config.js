@@ -5,6 +5,7 @@ window.SITE_CONFIG = {
   "showSourcePath": false,
   "marketingProof": {
     "headline": "高回収率のモデルを使用",
+    "description": "複勝の購入にそのまま使った場合は回収率が100%を超えないため、普段の予想の参考情報としてご活用ください。",
     "validationLabel": "検証期間 2024-2025",
     "footnote": "※学習期間: 2008-2023年 / テスト期間: 2024-2025年",
     "strategies": [
