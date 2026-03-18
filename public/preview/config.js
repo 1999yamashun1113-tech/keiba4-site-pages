@@ -28,7 +28,7 @@ window.SITE_CONFIG = {
     "checkedAtUtc": "2026-03-17T07:06:48Z",
     "pendingRaceDate": "20260321",
     "headline": "3/21分はデータ取得待ちです",
-    "message": "最新取得日は 3/15 です。3/21 分の予想はデータ取得待ちで、前日の夕方に公表されるデータを取り込み後に公開します。"
+    "message": "最新取得日は 3/15 です。3/21 分の予想は前日の夕方に公表されます。"
   },
   "membership": {
     "enabled": true,
