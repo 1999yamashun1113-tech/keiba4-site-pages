@@ -306,6 +306,37 @@ textarea {
   line-height: 1.7;
 }
 
+.offer-actions,
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.primary-link,
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 12px 18px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-link {
+  border: 0;
+  background: linear-gradient(135deg, rgba(15, 90, 67, 0.95), rgba(20, 35, 29, 0.92));
+  color: #f8f3e8;
+}
+
+.ghost-link {
+  border: 1px solid rgba(20, 35, 29, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+}
+
 .site-links {
   display: flex;
   flex-wrap: wrap;
@@ -756,6 +787,65 @@ textarea {
 
 .policy-back {
   margin: 28px 0 0;
+}
+
+.account-shell {
+  display: grid;
+  gap: 22px;
+}
+
+.account-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.account-card {
+  padding: 22px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(20, 35, 29, 0.08);
+}
+
+.account-head h2 {
+  margin: 0;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+}
+
+.account-head p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.account-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.account-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.account-form input {
+  border: 1px solid rgba(20, 35, 29, 0.16);
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.account-message {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(20, 35, 29, 0.06);
+  color: var(--ink);
+}
+
+.account-message[data-kind='error'] {
+  background: rgba(162, 52, 36, 0.1);
+  color: #7c2a1c;
 }
 
 @keyframes rise {

@@ -2,6 +2,7 @@ const state = {
   mode: 'public',
   selectedRaceKey: null,
   payloads: null,
+  member: null,
 };
 
 const siteConfig = window.SITE_CONFIG || {
@@ -9,6 +10,13 @@ const siteConfig = window.SITE_CONFIG || {
   dataBase: '/api/site-payload',
   premiumEnabled: true,
   showSourcePath: false,
+  membership: {
+    enabled: false,
+    apiBase: '',
+    siteOrigin: '',
+    accountPath: '/account.html',
+    supportEmail: 'support@keibapicknavi.com',
+  },
 };
 
 const els = {
@@ -41,6 +49,23 @@ let refreshTimer = null;
 
 function api(path) {
   return fetch(path, { headers: { Accept: 'application/json' } }).then(async (response) => {
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const message = data && data.message ? data.message : `request failed: ${response.status}`;
+      throw new Error(message);
+    }
+    return data;
+  });
+}
+
+function membershipApi(path, options = {}) {
+  const membership = siteConfig.membership || {};
+  const apiBase = String(membership.apiBase || '').replace(/\/$/, '');
+  return fetch(`${apiBase}${path}`, {
+    credentials: 'include',
+    headers: { Accept: 'application/json', ...(options.headers || {}) },
+    ...options,
+  }).then(async (response) => {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
       const message = data && data.message ? data.message : `request failed: ${response.status}`;
@@ -111,6 +136,10 @@ function betTypeLabel(betType) {
     sanrenpuku: '三連複',
   };
   return labels[betType] || betType || '-';
+}
+
+function premiumAvailable() {
+  return Boolean(siteConfig.premiumEnabled || (state.member && state.member.hasAccess && state.payloads?.premium));
 }
 
 function formatPercent(value) {
@@ -224,11 +253,11 @@ function renderSummary(summary, publicPayload, premiumPayload) {
   els.generatedAt.textContent = formatTimestamp(summary.generated_at_utc);
   els.raceCount.textContent = String(summary.public_race_count || 0);
   els.publicPickTotal.textContent = String(publicPickTotal);
-  els.premiumPickTotal.textContent = siteConfig.premiumEnabled ? String(premiumPickTotal) : 'hidden';
+  els.premiumPickTotal.textContent = premiumAvailable() ? String(premiumPickTotal) : 'hidden';
   els.ticketTotal.textContent = String(ticketTotal);
-  els.summaryCardPremium.hidden = !siteConfig.premiumEnabled;
-  els.modeSwitch.hidden = !siteConfig.premiumEnabled;
-  els.modePremium.hidden = !siteConfig.premiumEnabled;
+  els.summaryCardPremium.hidden = !premiumAvailable();
+  els.modeSwitch.hidden = !premiumAvailable();
+  els.modePremium.hidden = !premiumAvailable();
   els.lastRefreshAt.textContent = new Intl.DateTimeFormat('ja-JP', {
     hour: '2-digit',
     minute: '2-digit',
@@ -398,7 +427,7 @@ function renderRaceDetail() {
   const raceNum = race.meta?.race_num ? `R${race.meta.race_num}` : race.race_key;
   const title = race.meta?.race_name ? `${raceNum} ${race.meta.race_name}` : raceNum;
   const modeNote =
-    !siteConfig.premiumEnabled
+    !premiumAvailable()
       ? '無料版の表示です。公開している注目馬と馬券候補を確認できます。'
       : state.mode === 'public'
       ? `無料版を表示中です。premiumプランでは ${Math.max((comparisonRace?.picks.length || 0) - race.picks.length, 0)} 頭ぶん多く注目馬を確認できます。`
@@ -443,15 +472,32 @@ function renderRaceDetail() {
 }
 
 function setMode(mode) {
-  state.mode = siteConfig.premiumEnabled ? mode : 'public';
+  state.mode = premiumAvailable() ? mode : 'public';
   els.modePublic.classList.toggle('is-active', state.mode === 'public');
-  els.modePremium.classList.toggle('is-active', siteConfig.premiumEnabled && state.mode === 'premium');
+  els.modePremium.classList.toggle('is-active', premiumAvailable() && state.mode === 'premium');
   if (!state.payloads) {
     return;
   }
   renderFeaturedCards();
   renderRaceNav();
   renderRaceDetail();
+}
+
+async function loadMemberPremiumPayload() {
+  if (!siteConfig.membership?.enabled || siteConfig.premiumEnabled) {
+    return null;
+  }
+  try {
+    const member = await membershipApi('/api/member/status');
+    state.member = member;
+    if (!member.signedIn || !member.hasAccess) {
+      return null;
+    }
+    return await membershipApi('/api/member/premium-payload');
+  } catch (error) {
+    state.member = null;
+    return null;
+  }
 }
 
 async function load() {
@@ -467,8 +513,11 @@ async function load() {
     }
     const responses = await Promise.all(requests);
     const publicPayload = responses[0];
-    const premiumPayload = siteConfig.premiumEnabled ? responses[1] : null;
+    let premiumPayload = siteConfig.premiumEnabled ? responses[1] : null;
     const summary = siteConfig.premiumEnabled ? responses[2] : responses[1];
+    if (!siteConfig.premiumEnabled) {
+      premiumPayload = await loadMemberPremiumPayload();
+    }
 
     state.payloads = { public: publicPayload, premium: premiumPayload, summary };
     if (!state.selectedRaceKey || !publicPayload.races.some((race) => race.race_key === state.selectedRaceKey)) {

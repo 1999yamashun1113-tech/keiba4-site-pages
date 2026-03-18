@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>会員ページ | 競馬ピックナビ</title>
+    <link rel="stylesheet" href="preview/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell policy-page">
+      <main class="policy-shell account-shell">
+        <header class="policy-hero">
+          <p class="eyebrow">競馬ピックナビ</p>
+          <h1>会員ページ</h1>
+          <p>
+            premium プランの購入、ログイン、解約手続きに使うページです。購入後はここから Stripe の会員管理ページへ進めます。
+          </p>
+        </header>
+
+        <div id="accountNotice" class="account-message" hidden></div>
+
+        <section class="account-grid">
+          <article class="account-card" id="accountLoggedOut">
+            <div class="account-head">
+              <h2>購入またはログイン</h2>
+              <p>premium プランは月額 980円（税込）です。</p>
+            </div>
+            <div class="account-actions">
+              <button class="refresh-button" id="startCheckoutButton" type="button">premiumプランを始める</button>
+            </div>
+            <form id="loginForm" class="account-form">
+              <label>
+                <span>メールアドレス</span>
+                <input id="loginEmail" name="email" type="email" autocomplete="email" required />
+              </label>
+              <label>
+                <span>パスワード</span>
+                <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
+              </label>
+              <button class="primary-link button-link" type="submit">ログイン</button>
+            </form>
+          </article>
+
+          <article class="account-card" id="accountPasswordSetup" hidden>
+            <div class="account-head">
+              <h2>購入後の初回設定</h2>
+              <p>決済完了後、最初の1回だけパスワードを設定してください。</p>
+            </div>
+            <form id="passwordSetupForm" class="account-form">
+              <label>
+                <span>購入メールアドレス</span>
+                <input id="setupEmail" type="email" disabled />
+              </label>
+              <label>
+                <span>パスワード</span>
+                <input id="setupPassword" name="password" type="password" autocomplete="new-password" minlength="10" required />
+              </label>
+              <button class="primary-link button-link" type="submit">パスワードを設定して続ける</button>
+            </form>
+          </article>
+
+          <article class="account-card" id="accountSignedIn" hidden>
+            <div class="account-head">
+              <h2>契約状況</h2>
+              <p id="accountStatusText">読込中です。</p>
+            </div>
+            <div class="policy-table">
+              <div>
+                <span class="summary-label">メールアドレス</span>
+                <strong id="accountEmail">-</strong>
+              </div>
+              <div>
+                <span class="summary-label">契約状態</span>
+                <strong id="accountPlanStatus">-</strong>
+              </div>
+              <div>
+                <span class="summary-label">利用期限</span>
+                <strong id="accountExpiresAt">-</strong>
+              </div>
+            </div>
+            <div class="account-actions">
+              <a class="primary-link" href="/">トップページで premium を見る</a>
+              <button class="ghost-link button-link" id="openPortalButton" type="button">支払い方法・解約</button>
+              <button class="ghost-link button-link" id="logoutButton" type="button">ログアウト</button>
+            </div>
+          </article>
+        </section>
+
+        <p class="policy-back"><a href="/">トップページへ戻る</a></p>
+      </main>
+    </div>
+
+    <script src="preview/config.js"></script>
+    <script src="preview/account.js" defer></script>
+  </body>
+</html>

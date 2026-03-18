@@ -21,5 +21,12 @@ window.SITE_CONFIG = {
         "ticketCount": 1298
       }
     ]
+  },
+  "membership": {
+    "enabled": true,
+    "apiBase": "https://api.keibapicknavi.com",
+    "siteOrigin": "https://www.keibapicknavi.com",
+    "accountPath": "/account.html",
+    "supportEmail": "support@keibapicknavi.com"
   }
 };
