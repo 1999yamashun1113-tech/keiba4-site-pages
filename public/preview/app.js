@@ -3,6 +3,7 @@ const state = {
   selectedRaceKey: null,
   payloads: null,
   member: null,
+  availabilityFallback: false,
 };
 
 const siteConfig = window.SITE_CONFIG || {
@@ -153,6 +154,14 @@ function publicationStatusConfig() {
   return status;
 }
 
+function shouldUseAvailabilityFallback(summary) {
+  const status = publicationStatusConfig();
+  if (!status?.displayRaceDate) {
+    return false;
+  }
+  return Boolean(summary?.race_date && String(status.displayRaceDate) !== String(summary.race_date));
+}
+
 function formatPercent(value) {
   if (value === null || value === undefined || Number.isNaN(Number(value))) {
     return '-';
@@ -279,10 +288,17 @@ function renderSummary(summary, publicPayload, premiumPayload) {
 
   els.raceDate.textContent = formatRaceDate(displayRaceDate);
   els.generatedAt.textContent = formatTimestamp(displayUpdatedAt);
-  els.raceCount.textContent = String(summary.public_race_count || 0);
-  els.publicPickTotal.textContent = String(publicPickTotal);
-  els.premiumPickTotal.textContent = premiumAvailable() ? String(premiumPickTotal) : 'hidden';
-  els.ticketTotal.textContent = String(ticketTotal);
+  if (state.availabilityFallback) {
+    els.raceCount.textContent = '-';
+    els.publicPickTotal.textContent = '-';
+    els.premiumPickTotal.textContent = premiumAvailable() ? '-' : 'hidden';
+    els.ticketTotal.textContent = '-';
+  } else {
+    els.raceCount.textContent = String(summary.public_race_count || 0);
+    els.publicPickTotal.textContent = String(publicPickTotal);
+    els.premiumPickTotal.textContent = premiumAvailable() ? String(premiumPickTotal) : 'hidden';
+    els.ticketTotal.textContent = String(ticketTotal);
+  }
   els.summaryCardPremium.hidden = !premiumAvailable();
   els.modeSwitch.hidden = !premiumAvailable();
   els.modePremium.hidden = !premiumAvailable();
@@ -325,6 +341,19 @@ function renderFeaturedCards() {
   if (!state.payloads) {
     return;
   }
+  if (state.availabilityFallback) {
+    els.featuredPickCard.innerHTML = `
+      <p class="eyebrow">注目馬</p>
+      <h2>最新データの公開待ちです</h2>
+      <p class="feature-copy">前日の夕方に公表されるデータを取り込み後、当日の公開分を表示します。</p>
+    `;
+    els.featuredTicketCard.innerHTML = `
+      <p class="eyebrow">注目馬券</p>
+      <h2>データ取得後に公開します</h2>
+      <p class="feature-copy">馬券候補は、最新の公開データがそろい次第表示します。</p>
+    `;
+    return;
+  }
   const current = state.payloads[state.mode] || state.payloads.public;
   const featuredPick = topPickFrom(current);
   const featuredTicket = topTicketFrom(state.payloads.public);
@@ -359,6 +388,10 @@ function renderFeaturedCards() {
 }
 
 function renderRaceNav() {
+  if (state.availabilityFallback) {
+    els.raceNav.innerHTML = '<div class="empty-state">最新データの到着後にレース一覧を表示します。</div>';
+    return;
+  }
   const payload = state.payloads[state.mode] || state.payloads.public;
   els.raceNav.innerHTML = '';
 
@@ -442,6 +475,15 @@ function renderTickets(tickets, racePicks = []) {
 }
 
 function renderRaceDetail() {
+  if (state.availabilityFallback) {
+    const pendingLabel = formatRaceDate(publicationStatusConfig()?.pendingRaceDate || '').replace(/^0/, '');
+    els.raceDetail.innerHTML = `
+      <div class="empty-state">
+        ${escapeHtml(pendingLabel || '次回公開分')}の予想はデータ取得待ちです。前日の夕方に公表されるデータを取り込み後、ここにレース詳細を表示します。
+      </div>
+    `;
+    return;
+  }
   const payload = state.payloads[state.mode] || state.payloads.public;
   const comparisonPayload = state.mode === 'public' ? state.payloads.premium : state.payloads.public;
   const race = getRaceByKey(payload, state.selectedRaceKey);
@@ -548,6 +590,7 @@ async function load() {
     }
 
     state.payloads = { public: publicPayload, premium: premiumPayload, summary };
+    state.availabilityFallback = shouldUseAvailabilityFallback(summary);
     if (!state.selectedRaceKey || !publicPayload.races.some((race) => race.race_key === state.selectedRaceKey)) {
       state.selectedRaceKey = publicPayload.races[0]?.race_key || null;
     }
@@ -556,7 +599,7 @@ async function load() {
     renderFeaturedCards();
     renderRaceNav();
     renderRaceDetail();
-    els.statusText.textContent = '最新データを表示しています';
+    els.statusText.textContent = state.availabilityFallback ? '最新データの公開待ちです' : '最新データを表示しています';
   } catch (error) {
     els.statusText.textContent = 'データを取得できませんでした';
     els.raceDetail.innerHTML = `<div class="empty-state">${escapeHtml(error.message)}</div>`;
