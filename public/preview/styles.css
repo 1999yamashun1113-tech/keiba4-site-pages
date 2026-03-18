@@ -314,6 +314,20 @@ textarea {
   margin-top: 16px;
 }
 
+.offer-login-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  margin-top: 14px;
+}
+
+.offer-login-label {
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
 .primary-link,
 .button-link {
   display: inline-flex;
@@ -335,6 +349,14 @@ textarea {
   border: 1px solid rgba(20, 35, 29, 0.12);
   background: rgba(255, 255, 255, 0.7);
   color: var(--ink);
+}
+
+.offer-login-button {
+  min-width: 148px;
+  justify-content: center;
+  background: rgba(20, 35, 29, 0.08);
+  border-color: rgba(20, 35, 29, 0.18);
+  font-weight: 700;
 }
 
 .site-links {
@@ -911,6 +933,14 @@ textarea {
 
   .hero-meta {
     gap: 6px;
+  }
+
+  .offer-login-row {
+    align-items: stretch;
+  }
+
+  .offer-login-button {
+    width: 100%;
   }
 
   .table-head {
