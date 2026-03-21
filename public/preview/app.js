@@ -130,6 +130,13 @@ function formatNumber(value, digits = 2) {
   return Number(value).toFixed(digits);
 }
 
+function formatExpectedValue(value, digits = 3) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) {
+    return '-';
+  }
+  return Math.abs(Number(value)).toFixed(digits);
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -473,7 +480,7 @@ function renderPickRow(pick) {
         <div class="horse-sub">馬番 ${pick.horse_num}</div>
       </div>
       <div><span class="pick-cell-muted">注目度</span><br />${formatNumber(pick.pred_score, 3)}</div>
-      <div><span class="pick-cell-muted">期待値</span><br />${formatNumber(pick.pred_ev_place, 3)}</div>
+      <div><span class="pick-cell-muted">期待値</span><br />${formatExpectedValue(pick.pred_ev_place, 3)}</div>
       <div><span class="pick-cell-muted">単勝</span><br />${formatNumber(pick.odds_win, 1)}</div>
       <div><span class="pick-cell-muted">複勝</span><br />${formatNumber(pick.odds_place, 1)}</div>
     </div>

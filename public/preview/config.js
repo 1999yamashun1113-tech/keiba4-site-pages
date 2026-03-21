@@ -3,18 +3,37 @@ window.SITE_CONFIG = {
   "dataBase": "data",
   "premiumEnabled": false,
   "showSourcePath": false,
-  "marketingProof": {},
+  "marketingProof": {
+    "headline": "高回収率のモデルを使用",
+    "description": "複勝の購入にそのまま使った場合は回収率が100%を超えないため、普段の予想の参考情報としてご活用ください。",
+    "validationLabel": "検証期間 2024-2025",
+    "footnote": "※学習期間: 2008-2023年 / テスト期間: 2024-2025年",
+    "strategies": [
+      {
+        "betType": "sanrenpuku",
+        "label": "三連複",
+        "roi": 1.1700900900900901,
+        "ticketCount": 555
+      },
+      {
+        "betType": "wide",
+        "label": "ワイド",
+        "roi": 1.065562403697997,
+        "ticketCount": 1298
+      }
+    ]
+  },
   "maintenanceStatus": {
     "enabled": true,
     "headline": "現在サイトメンテナンス中です",
-    "message": "JRDBデータ反映の遅れに対応中です。3/21 - 3/22 分の公開準備を進めています。 最新取得日は 3/22 です。"
+    "message": "サイト全体を修正中です。表示内容は暫定のため、順次更新します。 現在の掲載対象日は 3/22 です。"
   },
   "publicationStatus": {
     "displayRaceDate": "20260322",
-    "checkedAtUtc": "2026-03-20T14:56:51Z",
-    "pendingRaceDate": "20260321",
-    "headline": "3/21分はデータ取得待ちです",
-    "message": "最新取得日は 3/22 です。3/21 分の予想は前日の夕方に公表されます。"
+    "checkedAtUtc": "2026-03-21T08:55:49Z",
+    "pendingRaceDate": "",
+    "headline": "3/22分を公開中です",
+    "message": "最新取得日は 3/22 です。"
   },
   "membership": {
     "enabled": true,
