@@ -407,7 +407,7 @@ function renderFeaturedCards() {
       <h2>${escapeHtml(ticketHorseLabel(featuredTicket, featuredTicket.race_picks))}</h2>
       <p class="feature-copy">R${escapeHtml(featuredTicket.race_num)} / ${escapeHtml(betTypeLabel(featuredTicket.bet_type))}</p>
       <p class="feature-copy">${escapeHtml(ticketHorseMeta(featuredTicket, featuredTicket.race_picks))}</p>
-      <p class="feature-copy">期待値 ${formatNumber(featuredTicket.ev_est, 2)} / 想定オッズ ${formatNumber(featuredTicket.est_odds, 1)}</p>
+      <p class="feature-copy">期待値 ${formatNumber(featuredTicket.ev_est, 2)}</p>
     `;
   } else {
     els.featuredTicketCard.innerHTML = `
@@ -495,7 +495,6 @@ function renderTickets(tickets, racePicks = []) {
               <p>${escapeHtml(ticketHorseMeta(ticket, racePicks))}</p>
               <div class="ticket-metrics">
                 <span>期待値 ${formatNumber(ticket.ev_est, 2)}</span>
-                <span>想定オッズ ${formatNumber(ticket.est_odds, 1)}</span>
               </div>
             </article>
           `,
