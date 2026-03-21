@@ -11,6 +11,7 @@ const siteConfig = window.SITE_CONFIG || {
   dataBase: '/api/site-payload',
   premiumEnabled: true,
   showSourcePath: false,
+  maintenanceStatus: null,
   membership: {
     enabled: false,
     apiBase: '',
@@ -21,6 +22,9 @@ const siteConfig = window.SITE_CONFIG || {
 };
 
 const els = {
+  maintenanceBanner: document.getElementById('maintenanceBanner'),
+  maintenanceHeadline: document.getElementById('maintenanceHeadline'),
+  maintenanceMessage: document.getElementById('maintenanceMessage'),
   publicationStatus: document.getElementById('publicationStatus'),
   publicationHeadline: document.getElementById('publicationHeadline'),
   publicationMessage: document.getElementById('publicationMessage'),
@@ -155,6 +159,14 @@ function publicationStatusConfig() {
   return status;
 }
 
+function maintenanceStatusConfig() {
+  const status = siteConfig.maintenanceStatus || {};
+  if (!status || status.enabled === false || (!status.headline && !status.message)) {
+    return null;
+  }
+  return status;
+}
+
 function shouldUseAvailabilityFallback(summary) {
   const status = publicationStatusConfig();
   if (!status?.displayRaceDate) {
@@ -280,6 +292,20 @@ function renderPublicationStatus() {
   els.publicationStatus.hidden = false;
   els.publicationHeadline.textContent = status.headline || '';
   els.publicationMessage.textContent = status.message || '';
+}
+
+function renderMaintenanceBanner() {
+  const status = maintenanceStatusConfig();
+  if (!els.maintenanceBanner) {
+    return;
+  }
+  if (!status) {
+    els.maintenanceBanner.hidden = true;
+    return;
+  }
+  els.maintenanceBanner.hidden = false;
+  els.maintenanceHeadline.textContent = status.headline || '';
+  els.maintenanceMessage.textContent = status.message || '';
 }
 
 function renderSummary(summary, publicPayload, premiumPayload) {
@@ -617,6 +643,7 @@ els.modePublic.addEventListener('click', () => setMode('public'));
 els.modePremium.addEventListener('click', () => setMode('premium'));
 els.refreshButton.addEventListener('click', () => load());
 
+renderMaintenanceBanner();
 renderMarketingProof();
 renderPublicationStatus();
 load();

@@ -7,6 +7,8 @@
   --green-soft: #d7eadf;
   --gold: #b3862d;
   --gold-soft: #f1e3be;
+  --warn: #8b2f21;
+  --warn-soft: #f5ddd6;
   --line: rgba(20, 35, 29, 0.12);
   --shadow: 0 18px 42px rgba(20, 35, 29, 0.12);
   --radius-lg: 28px;
@@ -43,6 +45,41 @@ textarea {
   width: min(1180px, calc(100vw - 32px));
   margin: 0 auto;
   padding: 28px 0 56px;
+}
+
+.maintenance-banner {
+  padding: 20px 0 0;
+}
+
+.maintenance-banner-inner {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(139, 47, 33, 0.94), rgba(96, 29, 19, 0.96));
+  border: 1px solid rgba(139, 47, 33, 0.28);
+  box-shadow: var(--shadow);
+  color: #fff7f2;
+}
+
+.maintenance-kicker {
+  margin: 0;
+  color: rgba(255, 247, 242, 0.76);
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.maintenance-banner strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.08rem;
+}
+
+.maintenance-banner p:last-child {
+  margin: 8px 0 0;
+  color: rgba(255, 247, 242, 0.9);
+  line-height: 1.65;
 }
 
 .hero {
@@ -951,8 +988,12 @@ textarea {
 }
 
 @media (max-width: 760px) {
+  .maintenance-banner-inner,
   .page-shell {
     width: min(100vw - 18px, 1180px);
+  }
+
+  .page-shell {
     padding-top: 12px;
   }
 

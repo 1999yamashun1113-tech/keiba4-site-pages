@@ -23,12 +23,17 @@ window.SITE_CONFIG = {
       }
     ]
   },
+  "maintenanceStatus": {
+    "enabled": false,
+    "headline": "",
+    "message": ""
+  },
   "publicationStatus": {
-    "displayRaceDate": "20260315",
-    "checkedAtUtc": "2026-03-17T07:06:48Z",
-    "pendingRaceDate": "20260321",
-    "headline": "3/21分はデータ取得待ちです",
-    "message": "最新取得日は 3/15 です。3/21 分の予想は前日の夕方に公表されます。"
+    "displayRaceDate": "20260322",
+    "checkedAtUtc": "2026-03-21T08:55:49Z",
+    "pendingRaceDate": "",
+    "headline": "3/22分を公開中です",
+    "message": "最新取得日は 3/22 です。"
   },
   "membership": {
     "enabled": true,
