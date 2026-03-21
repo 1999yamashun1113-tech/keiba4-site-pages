@@ -3,7 +3,17 @@ const membershipConfig = siteConfig.membership || {
   enabled: false,
   apiBase: '',
   supportEmail: 'support@keibapicknavi.com',
+  demo: {
+    enabled: false,
+    label: '',
+    email: '',
+    payloadPath: '',
+    defaultMode: 'premium',
+    accessExpiresAt: '',
+  },
 };
+
+const DEMO_SESSION_KEY = 'kpn-demo-member';
 
 const state = {
   checkoutSessionId: new URLSearchParams(window.location.search).get('session_id') || '',
@@ -21,12 +31,14 @@ const els = {
   setupEmail: document.getElementById('setupEmail'),
   setupPassword: document.getElementById('setupPassword'),
   startCheckoutButton: document.getElementById('startCheckoutButton'),
+  demoLoginButton: document.getElementById('demoLoginButton'),
   openPortalButton: document.getElementById('openPortalButton'),
   logoutButton: document.getElementById('logoutButton'),
   statusText: document.getElementById('accountStatusText'),
   accountEmail: document.getElementById('accountEmail'),
   accountPlanStatus: document.getElementById('accountPlanStatus'),
   accountExpiresAt: document.getElementById('accountExpiresAt'),
+  accountTopLink: document.getElementById('accountTopLink'),
 };
 
 function apiBase() {
@@ -50,6 +62,43 @@ function memberApi(path, { method = 'GET', body } = {}) {
     }
     return data;
   });
+}
+
+function demoConfig() {
+  return membershipConfig.demo || {};
+}
+
+function demoSessionEnabled() {
+  try {
+    return window.localStorage.getItem(DEMO_SESSION_KEY) === '1';
+  } catch (error) {
+    return false;
+  }
+}
+
+function setDemoSession(enabled) {
+  try {
+    if (enabled) {
+      window.localStorage.setItem(DEMO_SESSION_KEY, '1');
+      return;
+    }
+    window.localStorage.removeItem(DEMO_SESSION_KEY);
+  } catch (error) {
+    // Ignore storage access errors and keep the page usable.
+  }
+}
+
+function buildDemoMember() {
+  const demo = demoConfig();
+  return {
+    enabled: true,
+    signedIn: true,
+    hasAccess: true,
+    isDemo: true,
+    email: demo.email || '',
+    subscriptionStatus: demo.label || '確認用アカウント',
+    accessExpiresAt: demo.accessExpiresAt || '',
+  };
 }
 
 function formatTimestamp(value) {
@@ -99,15 +148,24 @@ function renderSignedIn(payload) {
   els.loggedOut.hidden = true;
   els.passwordSetup.hidden = true;
   els.signedIn.hidden = false;
-  els.statusText.textContent = payload.hasAccess
+  els.statusText.textContent = payload.isDemo
+    ? '確認用ログイン中です。ログイン後の表示確認に使えます。'
+    : payload.hasAccess
     ? 'premium プランの閲覧権限があります。'
     : '契約状態は保存されています。必要に応じて Stripe 側でお支払い情報をご確認ください。';
   els.accountEmail.textContent = payload.email || '-';
   els.accountPlanStatus.textContent = payload.subscriptionStatus || '-';
   els.accountExpiresAt.textContent = formatTimestamp(payload.accessExpiresAt);
+  if (els.accountTopLink) {
+    els.accountTopLink.textContent = payload.isDemo ? 'トップページで確認用表示を見る' : 'トップページで premium を見る';
+  }
 }
 
 async function loadStatus() {
+  if (demoConfig().enabled && demoSessionEnabled()) {
+    renderSignedIn(buildDemoMember());
+    return;
+  }
   const payload = await memberApi('/api/member/status');
   if (!payload.enabled) {
     renderSignedOut();
@@ -174,6 +232,13 @@ els.loginForm.addEventListener('submit', async (event) => {
   }
 });
 
+if (els.demoLoginButton) {
+  els.demoLoginButton.addEventListener('click', () => {
+    setDemoSession(true);
+    window.location.href = '/';
+  });
+}
+
 els.setupForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
@@ -185,6 +250,10 @@ els.setupForm.addEventListener('submit', async (event) => {
 });
 
 els.openPortalButton.addEventListener('click', async () => {
+  if (demoSessionEnabled()) {
+    showNotice('確認用アカウントでは支払い方法・解約ページは利用しません。', 'info');
+    return;
+  }
   try {
     showNotice('');
     const payload = await memberApi('/api/member/create-portal-session', { method: 'POST' });
@@ -198,6 +267,12 @@ els.openPortalButton.addEventListener('click', async () => {
 });
 
 els.logoutButton.addEventListener('click', async () => {
+  if (demoSessionEnabled()) {
+    setDemoSession(false);
+    renderSignedOut();
+    showNotice('確認用アカウントからログアウトしました。', 'info');
+    return;
+  }
   try {
     showNotice('');
     await memberApi('/api/member/logout', { method: 'POST' });
@@ -211,6 +286,11 @@ async function main() {
   try {
     if (new URLSearchParams(window.location.search).get('checkout') === 'cancelled') {
       showNotice('決済はキャンセルされました。', 'info');
+    }
+    if (demoConfig().enabled && demoSessionEnabled()) {
+      renderSignedIn(buildDemoMember());
+      showNotice('確認用アカウントでログイン中です。トップページで表示を確認できます。');
+      return;
     }
     if (state.checkoutSessionId) {
       await completeCheckout();
