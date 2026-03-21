@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
   },
   "publicationStatus": {
     "displayRaceDate": "20260322",
-    "checkedAtUtc": "2026-03-21T18:18:51Z",
+    "checkedAtUtc": "2026-03-21T18:50:51Z",
     "pendingRaceDate": "",
     "headline": "3/22分を公開中です",
     "message": "最新取得日は 3/22 です。"
