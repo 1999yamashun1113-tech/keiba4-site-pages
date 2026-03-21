@@ -6,19 +6,6 @@ const state = {
   availabilityFallback: false,
 };
 
-const PLACE_CODE_LABELS = {
-  '01': '札幌',
-  '02': '函館',
-  '03': '福島',
-  '04': '新潟',
-  '05': '東京',
-  '06': '中山',
-  '07': '中京',
-  '08': '京都',
-  '09': '阪神',
-  '10': '小倉',
-};
-
 const siteConfig = window.SITE_CONFIG || {
   mode: 'server',
   dataBase: '/api/site-payload',
@@ -258,26 +245,6 @@ function ticketHorseMeta(ticket, racePicks = []) {
     .join(' / ');
 }
 
-function normalizePlaceCode(value) {
-  const token = String(value ?? '').trim();
-  if (!token) {
-    return '';
-  }
-  return token.padStart(2, '0');
-}
-
-function venueCode(race) {
-  return normalizePlaceCode(race.meta?.place_code || race.race_key?.slice(0, 2));
-}
-
-function venueLabel(race) {
-  const code = venueCode(race);
-  if (!code) {
-    return '開催情報未設定';
-  }
-  return PLACE_CODE_LABELS[code] || `場コード ${code}`;
-}
-
 function formatRaceLabel(race) {
   const raceNum = race.meta?.race_num ? `R${race.meta.race_num}` : race.race_key;
   const start = race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : '時刻未定';
@@ -464,74 +431,27 @@ function renderRaceNav() {
     return;
   }
   const payload = state.payloads[state.mode] || state.payloads.public;
-  if (!payload?.races?.length) {
-    els.raceNav.innerHTML = '<div class="empty-state">公開中のレースはありません。</div>';
-    return;
-  }
   els.raceNav.innerHTML = '';
 
-  const sortedRaces = [...payload.races].sort((left, right) => {
-    const leftVenue = venueCode(left);
-    const rightVenue = venueCode(right);
-    if (leftVenue !== rightVenue) {
-      return leftVenue.localeCompare(rightVenue, 'ja');
+  payload.races.forEach((race) => {
+    const node = els.chipTemplate.content.firstElementChild.cloneNode(true);
+    const label = formatRaceLabel(race);
+    node.querySelector('.race-chip-num').textContent = label.title;
+    node.querySelector('.race-chip-meta').textContent = label.meta;
+    if (race.race_key === state.selectedRaceKey) {
+      node.classList.add('is-active');
     }
-    const leftRaceNum = Number(left.meta?.race_num);
-    const rightRaceNum = Number(right.meta?.race_num);
-    if (!Number.isNaN(leftRaceNum) && !Number.isNaN(rightRaceNum) && leftRaceNum !== rightRaceNum) {
-      return leftRaceNum - rightRaceNum;
-    }
-    return String(left.race_key || '').localeCompare(String(right.race_key || ''), 'ja');
-  });
-
-  const groups = new Map();
-  sortedRaces.forEach((race) => {
-    const key = venueCode(race) || 'unknown';
-    if (!groups.has(key)) {
-      groups.set(key, { label: venueLabel(race), races: [] });
-    }
-    groups.get(key).races.push(race);
-  });
-
-  groups.forEach((group) => {
-    const section = document.createElement('section');
-    section.className = 'race-venue-group';
-
-    const head = document.createElement('div');
-    head.className = 'race-venue-head';
-    head.innerHTML = `
-      <strong class="race-venue-name">${escapeHtml(group.label)}</strong>
-      <span class="race-venue-count">${group.races.length} レース</span>
-    `;
-    section.appendChild(head);
-
-    const grid = document.createElement('div');
-    grid.className = 'race-nav-grid';
-
-    group.races.forEach((race) => {
-      const node = els.chipTemplate.content.firstElementChild.cloneNode(true);
-      const label = formatRaceLabel(race);
-      node.querySelector('.race-chip-num').textContent = label.title;
-      node.querySelector('.race-chip-meta').textContent = label.meta;
-      if (race.race_key === state.selectedRaceKey) {
-        node.classList.add('is-active');
-      }
-      node.addEventListener('click', () => {
-        state.selectedRaceKey = race.race_key;
-        renderRaceNav();
-        renderRaceDetail();
-      });
-      grid.appendChild(node);
+    node.addEventListener('click', () => {
+      state.selectedRaceKey = race.race_key;
+      renderRaceNav();
+      renderRaceDetail();
     });
-
-    section.appendChild(grid);
-    els.raceNav.appendChild(section);
+    els.raceNav.appendChild(node);
   });
 }
 
 function renderMetaPills(race, comparisonRace) {
   const pills = [
-    ['レース場', venueLabel(race)],
     ['レースID', race.race_key],
     ['発走', race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : '-'],
     ['距離', race.meta?.distance ? `${race.meta.distance}m` : '-'],
@@ -612,8 +532,7 @@ function renderRaceDetail() {
   }
 
   const raceNum = race.meta?.race_num ? `R${race.meta.race_num}` : race.race_key;
-  const venue = venueLabel(race);
-  const title = race.meta?.race_name ? `${venue} ${raceNum} ${race.meta.race_name}` : `${venue} ${raceNum}`;
+  const title = race.meta?.race_name ? `${raceNum} ${race.meta.race_name}` : raceNum;
   const modeNote =
     !premiumAvailable()
       ? '無料版の表示です。公開している注目馬と馬券候補を確認できます。'
