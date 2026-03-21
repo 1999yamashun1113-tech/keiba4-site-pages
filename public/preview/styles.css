@@ -640,7 +640,37 @@ textarea {
 
 .race-nav {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 16px;
+}
+
+.race-venue-group {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(20, 35, 29, 0.08);
+}
+
+.race-venue-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.race-venue-name {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  font-size: 1.08rem;
+}
+
+.race-venue-count {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.race-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
   gap: 12px;
 }
 
