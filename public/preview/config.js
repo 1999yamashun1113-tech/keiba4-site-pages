@@ -11,13 +11,14 @@ window.SITE_CONFIG = {
   },
   "publicationStatus": {
     "displayRaceDate": "20260322",
-    "checkedAtUtc": "2026-03-22T12:57:02Z",
+    "checkedAtUtc": "2026-03-22T13:13:02Z",
     "pendingRaceDate": "",
     "headline": "3/22分を公開中です",
     "message": "最新取得日は 3/22 です。"
   },
   "membership": {
     "enabled": true,
+    "provider": "stripe",
     "apiBase": "https://api.keibapicknavi.com",
     "siteOrigin": "https://www.keibapicknavi.com",
     "accountPath": "/account.html",
