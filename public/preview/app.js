@@ -4,6 +4,20 @@ const state = {
   payloads: null,
   member: null,
   availabilityFallback: false,
+  didAutoSwitchMemberMode: false,
+};
+
+const PLACE_CODE_LABELS = {
+  '01': '札幌',
+  '02': '函館',
+  '03': '福島',
+  '04': '新潟',
+  '05': '東京',
+  '06': '中山',
+  '07': '中京',
+  '08': '京都',
+  '09': '阪神',
+  '10': '小倉',
 };
 
 const siteConfig = window.SITE_CONFIG || {
@@ -33,6 +47,7 @@ const els = {
   proofDescription: document.getElementById('proofDescription'),
   proofGrid: document.getElementById('proofGrid'),
   proofFootnote: document.getElementById('proofFootnote'),
+  offerShell: document.getElementById('offerShell'),
   raceDate: document.getElementById('raceDate'),
   generatedAt: document.getElementById('generatedAt'),
   raceCount: document.getElementById('raceCount'),
@@ -82,6 +97,10 @@ function membershipApi(path, options = {}) {
     }
     return data;
   });
+}
+
+function signedInMember() {
+  return Boolean(state.member?.signedIn && state.member?.hasAccess);
 }
 
 function dataPath(kind) {
@@ -137,6 +156,24 @@ function formatExpectedValue(value, digits = 3) {
   return Math.abs(Number(value)).toFixed(digits);
 }
 
+function formatRaceTime(value) {
+  const token = String(value ?? '').trim();
+  if (!token) {
+    return '時刻未定';
+  }
+  const digits = token.replace(/\D/g, '');
+  if (!digits) {
+    return token;
+  }
+  const padded = digits.padStart(4, '0').slice(-4);
+  const hour = Number(padded.slice(0, 2));
+  const minute = padded.slice(2, 4);
+  if (Number.isNaN(hour)) {
+    return token;
+  }
+  return `${hour}:${minute}`;
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -189,7 +226,54 @@ function formatPercent(value) {
   return `${(Number(value) * 100).toFixed(1)}%`;
 }
 
-function parseTicketCombo(ticket) {
+function expectedTicketHorseCount(ticket) {
+  return { wide: 2, sanrenpuku: 3 }[ticket?.bet_type] || 0;
+}
+
+function parsePackedTicketCombo(raw, expectedCount, availableHorseNums = null) {
+  function walk(index, horses) {
+    if (index === raw.length) {
+      return horses.length === expectedCount ? [...horses] : null;
+    }
+    const remainingDigits = raw.length - index;
+    const remainingSlots = expectedCount - horses.length;
+    if (remainingSlots <= 0) {
+      return null;
+    }
+    if (remainingDigits < remainingSlots || remainingDigits > remainingSlots * 2) {
+      return null;
+    }
+
+    for (const width of [2, 1]) {
+      if (index + width > raw.length) {
+        continue;
+      }
+      const token = raw.slice(index, index + width);
+      if (width === 2 && token.startsWith('0')) {
+        continue;
+      }
+      const horseNum = Number(token);
+      if (!Number.isInteger(horseNum) || horseNum <= 0 || horseNum > 18 || horses.includes(horseNum)) {
+        continue;
+      }
+      if (availableHorseNums && !availableHorseNums.has(horseNum)) {
+        continue;
+      }
+
+      horses.push(horseNum);
+      const parsed = walk(index + width, horses);
+      horses.pop();
+      if (parsed) {
+        return parsed;
+      }
+    }
+    return null;
+  }
+
+  return walk(0, []) || [];
+}
+
+function parseTicketCombo(ticket, racePicks = []) {
   const combo = String(ticket?.combo || '').trim();
   if (!combo) {
     return [];
@@ -198,24 +282,38 @@ function parseTicketCombo(ticket) {
     return Array.from(combo.matchAll(/\d+/g), (match) => Number(match[0])).filter((horseNum) => horseNum > 0);
   }
   if (/^\d+$/.test(combo)) {
-    const expectedCount = { wide: 2, sanrenpuku: 3 }[ticket?.bet_type] || 0;
-    if (expectedCount > 0 && combo.length === expectedCount * 2) {
-      const vals = [];
-      for (let idx = 0; idx < combo.length; idx += 2) {
-        vals.push(Number(combo.slice(idx, idx + 2)));
+    const expectedCount = expectedTicketHorseCount(ticket);
+    if (expectedCount > 0) {
+      const availableHorseNums = new Set(
+        (racePicks || [])
+          .map((pick) => Number(pick?.horse_num))
+          .filter((horseNum) => Number.isInteger(horseNum) && horseNum > 0 && horseNum <= 18),
+      );
+      const parsed = parsePackedTicketCombo(
+        combo,
+        expectedCount,
+        availableHorseNums.size ? availableHorseNums : null,
+      );
+      if (parsed.length) {
+        return parsed;
       }
-      return vals.filter((horseNum) => horseNum > 0);
     }
   }
   return [];
 }
 
 function ticketHorses(ticket, racePicks = []) {
+  const expectedCount = expectedTicketHorseCount(ticket);
   if (Array.isArray(ticket?.horses) && ticket.horses.length) {
-    return ticket.horses;
+    const validHorseNums = ticket.horses
+      .map((horse) => Number(horse?.horse_num))
+      .filter((horseNum) => Number.isInteger(horseNum) && horseNum > 0 && horseNum <= 18);
+    if (!expectedCount || validHorseNums.length === expectedCount) {
+      return ticket.horses;
+    }
   }
   const nameMap = new Map((racePicks || []).map((pick) => [pick.horse_num, pick.horse_name]));
-  return parseTicketCombo(ticket).map((horseNum) => {
+  return parseTicketCombo(ticket, racePicks).map((horseNum) => {
     const horse = { horse_num: horseNum };
     const horseName = nameMap.get(horseNum);
     if (horseName) {
@@ -228,11 +326,9 @@ function ticketHorses(ticket, racePicks = []) {
 function ticketHorseLabel(ticket, racePicks = []) {
   const horses = ticketHorses(ticket, racePicks);
   if (!horses.length) {
-    return ticket.combo || '-';
+    return String(ticket?.combo || '-').replaceAll('-', ',');
   }
-  return horses
-    .map((horse) => horse.horse_name || `馬番 ${horse.horse_num}`)
-    .join(' × ');
+  return horses.map((horse) => String(horse.horse_num)).join(',');
 }
 
 function ticketHorseMeta(ticket, racePicks = []) {
@@ -245,9 +341,29 @@ function ticketHorseMeta(ticket, racePicks = []) {
     .join(' / ');
 }
 
+function normalizePlaceCode(value) {
+  const token = String(value ?? '').trim();
+  if (!token) {
+    return '';
+  }
+  return token.padStart(2, '0');
+}
+
+function venueCode(race) {
+  return normalizePlaceCode(race.meta?.place_code || race.race_key?.slice(0, 2));
+}
+
+function venueLabel(race) {
+  const code = venueCode(race);
+  if (!code) {
+    return '開催情報未設定';
+  }
+  return PLACE_CODE_LABELS[code] || `場コード ${code}`;
+}
+
 function formatRaceLabel(race) {
   const raceNum = race.meta?.race_num ? `R${race.meta.race_num}` : race.race_key;
-  const start = race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : '時刻未定';
+  const start = formatRaceTime(race.meta?.start_time);
   return { title: raceNum, meta: start };
 }
 
@@ -315,6 +431,18 @@ function renderMaintenanceBanner() {
   els.maintenanceMessage.textContent = status.message || '';
 }
 
+function renderOfferShell() {
+  if (!els.offerShell) {
+    return;
+  }
+  els.offerShell.hidden = signedInMember();
+}
+
+function syncModeButtons() {
+  els.modePublic.classList.toggle('is-active', state.mode === 'public');
+  els.modePremium.classList.toggle('is-active', premiumAvailable() && state.mode === 'premium');
+}
+
 function renderSummary(summary, publicPayload, premiumPayload) {
   const publicPickTotal = publicPayload.races.reduce((sum, race) => sum + race.picks.length, 0);
   const premiumBase = premiumPayload || publicPayload;
@@ -340,6 +468,10 @@ function renderSummary(summary, publicPayload, premiumPayload) {
   els.summaryCardPremium.hidden = !premiumAvailable();
   els.modeSwitch.hidden = !premiumAvailable();
   els.modePremium.hidden = !premiumAvailable();
+  if (!premiumAvailable() && state.mode !== 'public') {
+    state.mode = 'public';
+  }
+  syncModeButtons();
   els.lastRefreshAt.textContent = new Intl.DateTimeFormat('ja-JP', {
     hour: '2-digit',
     minute: '2-digit',
@@ -394,7 +526,7 @@ function renderFeaturedCards() {
   }
   const current = state.payloads[state.mode] || state.payloads.public;
   const featuredPick = topPickFrom(current);
-  const featuredTicket = topTicketFrom(state.payloads.public);
+  const featuredTicket = topTicketFrom(current);
 
   if (featuredPick) {
     els.featuredPickCard.innerHTML = `
@@ -431,29 +563,76 @@ function renderRaceNav() {
     return;
   }
   const payload = state.payloads[state.mode] || state.payloads.public;
+  if (!payload?.races?.length) {
+    els.raceNav.innerHTML = '<div class="empty-state">公開中のレースはありません。</div>';
+    return;
+  }
   els.raceNav.innerHTML = '';
 
-  payload.races.forEach((race) => {
-    const node = els.chipTemplate.content.firstElementChild.cloneNode(true);
-    const label = formatRaceLabel(race);
-    node.querySelector('.race-chip-num').textContent = label.title;
-    node.querySelector('.race-chip-meta').textContent = label.meta;
-    if (race.race_key === state.selectedRaceKey) {
-      node.classList.add('is-active');
+  const sortedRaces = [...payload.races].sort((left, right) => {
+    const leftVenue = venueCode(left);
+    const rightVenue = venueCode(right);
+    if (leftVenue !== rightVenue) {
+      return leftVenue.localeCompare(rightVenue, 'ja');
     }
-    node.addEventListener('click', () => {
-      state.selectedRaceKey = race.race_key;
-      renderRaceNav();
-      renderRaceDetail();
+    const leftRaceNum = Number(left.meta?.race_num);
+    const rightRaceNum = Number(right.meta?.race_num);
+    if (!Number.isNaN(leftRaceNum) && !Number.isNaN(rightRaceNum) && leftRaceNum !== rightRaceNum) {
+      return leftRaceNum - rightRaceNum;
+    }
+    return String(left.race_key || '').localeCompare(String(right.race_key || ''), 'ja');
+  });
+
+  const groups = new Map();
+  sortedRaces.forEach((race) => {
+    const key = venueCode(race) || 'unknown';
+    if (!groups.has(key)) {
+      groups.set(key, { label: venueLabel(race), races: [] });
+    }
+    groups.get(key).races.push(race);
+  });
+
+  groups.forEach((group) => {
+    const section = document.createElement('section');
+    section.className = 'race-venue-group';
+
+    const head = document.createElement('div');
+    head.className = 'race-venue-head';
+    head.innerHTML = `
+      <strong class="race-venue-name">${escapeHtml(group.label)}</strong>
+      <span class="race-venue-count">${group.races.length} レース</span>
+    `;
+    section.appendChild(head);
+
+    const grid = document.createElement('div');
+    grid.className = 'race-nav-grid';
+
+    group.races.forEach((race) => {
+      const node = els.chipTemplate.content.firstElementChild.cloneNode(true);
+      const label = formatRaceLabel(race);
+      node.querySelector('.race-chip-num').textContent = label.title;
+      node.querySelector('.race-chip-meta').textContent = label.meta;
+      if (race.race_key === state.selectedRaceKey) {
+        node.classList.add('is-active');
+      }
+      node.addEventListener('click', () => {
+        state.selectedRaceKey = race.race_key;
+        renderRaceNav();
+        renderRaceDetail();
+      });
+      grid.appendChild(node);
     });
-    els.raceNav.appendChild(node);
+
+    section.appendChild(grid);
+    els.raceNav.appendChild(section);
   });
 }
 
 function renderMetaPills(race, comparisonRace) {
   const pills = [
+    ['レース場', venueLabel(race)],
     ['レースID', race.race_key],
-    ['発走', race.meta?.start_time ? `${race.meta.start_time.slice(0, 2)}:${race.meta.start_time.slice(2, 4)}` : '-'],
+    ['発走', formatRaceTime(race.meta?.start_time)],
     ['距離', race.meta?.distance ? `${race.meta.distance}m` : '-'],
     ['コース', race.meta?.track_type ?? '-'],
     ['頭数', race.meta?.headcount ?? '-'],
@@ -532,7 +711,9 @@ function renderRaceDetail() {
   }
 
   const raceNum = race.meta?.race_num ? `R${race.meta.race_num}` : race.race_key;
-  const title = race.meta?.race_name ? `${raceNum} ${race.meta.race_name}` : raceNum;
+  const venue = venueLabel(race);
+  const title = race.meta?.race_name ? `${venue} ${raceNum} ${race.meta.race_name}` : `${venue} ${raceNum}`;
+  const modeLabel = state.mode === 'public' ? '無料版' : 'premiumプラン';
   const modeNote =
     !premiumAvailable()
       ? '無料版の表示です。公開している注目馬と馬券候補を確認できます。'
@@ -544,7 +725,7 @@ function renderRaceDetail() {
     <div class="fade-in">
       <div class="detail-head">
         <div>
-          <p class="eyebrow">${state.mode === 'public' ? '無料版' : 'premiumプラン'}</p>
+          <p class="eyebrow">${modeLabel}</p>
           <h2>${title}</h2>
           <p class="detail-subline">${modeNote}</p>
         </div>
@@ -580,8 +761,7 @@ function renderRaceDetail() {
 
 function setMode(mode) {
   state.mode = premiumAvailable() ? mode : 'public';
-  els.modePublic.classList.toggle('is-active', state.mode === 'public');
-  els.modePremium.classList.toggle('is-active', premiumAvailable() && state.mode === 'premium');
+  syncModeButtons();
   if (!state.payloads) {
     return;
   }
@@ -591,7 +771,11 @@ function setMode(mode) {
 }
 
 async function loadMemberPremiumPayload() {
-  if (!siteConfig.membership?.enabled || siteConfig.premiumEnabled) {
+  if (siteConfig.premiumEnabled) {
+    return null;
+  }
+  if (!siteConfig.membership?.enabled) {
+    state.member = null;
     return null;
   }
   try {
@@ -623,15 +807,21 @@ async function load() {
     let premiumPayload = siteConfig.premiumEnabled ? responses[1] : null;
     const summary = siteConfig.premiumEnabled ? responses[2] : responses[1];
     if (!siteConfig.premiumEnabled) {
+      state.member = null;
       premiumPayload = await loadMemberPremiumPayload();
     }
 
     state.payloads = { public: publicPayload, premium: premiumPayload, summary };
     state.availabilityFallback = shouldUseAvailabilityFallback(summary);
+    if (signedInMember() && premiumPayload && !state.didAutoSwitchMemberMode) {
+      state.mode = 'premium';
+      state.didAutoSwitchMemberMode = true;
+    }
     if (!state.selectedRaceKey || !publicPayload.races.some((race) => race.race_key === state.selectedRaceKey)) {
       state.selectedRaceKey = publicPayload.races[0]?.race_key || null;
     }
 
+    renderOfferShell();
     renderSummary(summary, publicPayload, premiumPayload);
     renderFeaturedCards();
     renderRaceNav();
@@ -652,5 +842,6 @@ els.refreshButton.addEventListener('click', () => load());
 renderMaintenanceBanner();
 renderMarketingProof();
 renderPublicationStatus();
+renderOfferShell();
 load();
 refreshTimer = window.setInterval(load, 60_000);

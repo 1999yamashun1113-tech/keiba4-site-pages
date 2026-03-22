@@ -1,9 +1,65 @@
 {
   "race_date": "20260322",
-  "generated_at_utc": "2026-03-22T04:26:59Z",
-  "public_race_count": 9,
-  "payload_summary_rows": 9,
+  "generated_at_utc": "2026-03-21T15:06:32Z",
+  "public_race_count": 36,
+  "payload_summary_rows": 36,
   "payload_summary": [
+    {
+      "race_key": "06262801",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "06262802",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "06262803",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "06262804",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "06262805",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "06262806",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "06262807",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "1"
+    },
+    {
+      "race_key": "06262808",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
     {
       "race_key": "06262809",
       "race_date": "20260322",
@@ -16,28 +72,91 @@
       "race_date": "20260322",
       "is_major_race": "False",
       "public_pick_count": "3",
-      "public_ticket_count": "1"
+      "public_ticket_count": "0"
     },
     {
       "race_key": "06262811",
       "race_date": "20260322",
       "is_major_race": "False",
       "public_pick_count": "3",
-      "public_ticket_count": "1"
+      "public_ticket_count": "2"
     },
     {
-      "race_key": "07261409",
+      "race_key": "06262812",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "07261401",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "07261402",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "07261403",
       "race_date": "20260322",
       "is_major_race": "False",
       "public_pick_count": "3",
       "public_ticket_count": "0"
     },
     {
-      "race_key": "07261410",
+      "race_key": "07261404",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "07261405",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "0"
+    },
+    {
+      "race_key": "07261406",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "07261407",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "07261408",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "0"
+    },
+    {
+      "race_key": "07261409",
       "race_date": "20260322",
       "is_major_race": "False",
       "public_pick_count": "3",
       "public_ticket_count": "1"
+    },
+    {
+      "race_key": "07261410",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
     },
     {
       "race_key": "07261411",
@@ -47,18 +166,81 @@
       "public_ticket_count": "0"
     },
     {
-      "race_key": "09261a09",
+      "race_key": "07261412",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "0"
+    },
+    {
+      "race_key": "09261a01",
       "race_date": "20260322",
       "is_major_race": "False",
       "public_pick_count": "3",
       "public_ticket_count": "2"
     },
     {
-      "race_key": "09261a10",
+      "race_key": "09261a02",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "09261a03",
       "race_date": "20260322",
       "is_major_race": "False",
       "public_pick_count": "3",
       "public_ticket_count": "0"
+    },
+    {
+      "race_key": "09261a04",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "0"
+    },
+    {
+      "race_key": "09261a05",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "09261a06",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "09261a07",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "0"
+    },
+    {
+      "race_key": "09261a08",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
+    },
+    {
+      "race_key": "09261a09",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "0"
+    },
+    {
+      "race_key": "09261a10",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
     },
     {
       "race_key": "09261a11",
@@ -66,6 +248,13 @@
       "is_major_race": "True",
       "public_pick_count": "1",
       "public_ticket_count": "0"
+    },
+    {
+      "race_key": "09261a12",
+      "race_date": "20260322",
+      "is_major_race": "False",
+      "public_pick_count": "3",
+      "public_ticket_count": "2"
     }
   ]
 }

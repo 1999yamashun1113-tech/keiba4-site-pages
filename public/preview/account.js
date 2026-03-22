@@ -27,6 +27,7 @@ const els = {
   accountEmail: document.getElementById('accountEmail'),
   accountPlanStatus: document.getElementById('accountPlanStatus'),
   accountExpiresAt: document.getElementById('accountExpiresAt'),
+  accountTopLink: document.getElementById('accountTopLink'),
 };
 
 function apiBase() {
@@ -86,6 +87,9 @@ function renderSignedOut() {
   els.loggedOut.hidden = false;
   els.passwordSetup.hidden = true;
   els.signedIn.hidden = true;
+  if (els.openPortalButton) {
+    els.openPortalButton.hidden = false;
+  }
 }
 
 function renderPasswordSetup(email) {
@@ -105,6 +109,12 @@ function renderSignedIn(payload) {
   els.accountEmail.textContent = payload.email || '-';
   els.accountPlanStatus.textContent = payload.subscriptionStatus || '-';
   els.accountExpiresAt.textContent = formatTimestamp(payload.accessExpiresAt);
+  if (els.accountTopLink) {
+    els.accountTopLink.textContent = 'トップページで premium を見る';
+  }
+  if (els.openPortalButton) {
+    els.openPortalButton.hidden = payload.canManageBilling === false;
+  }
 }
 
 async function loadStatus() {
