@@ -7,7 +7,6 @@ const membershipConfig = siteConfig.membership || {
 
 const state = {
   checkoutSessionId: new URLSearchParams(window.location.search).get('session_id') || '',
-  billingProvider: membershipConfig.provider || '',
 };
 
 const els = {
@@ -29,7 +28,6 @@ const els = {
   accountPlanStatus: document.getElementById('accountPlanStatus'),
   accountExpiresAt: document.getElementById('accountExpiresAt'),
   accountTopLink: document.getElementById('accountTopLink'),
-  loginButton: document.querySelector('#loginForm button[type="submit"]'),
 };
 
 function apiBase() {
@@ -89,6 +87,9 @@ function renderSignedOut() {
   els.loggedOut.hidden = false;
   els.passwordSetup.hidden = true;
   els.signedIn.hidden = true;
+  if (els.openPortalButton) {
+    els.openPortalButton.hidden = false;
+  }
 }
 
 function renderPasswordSetup(email) {
@@ -99,17 +100,12 @@ function renderPasswordSetup(email) {
 }
 
 function renderSignedIn(payload) {
-  state.billingProvider = String(payload.billingProvider || state.billingProvider || '');
   els.loggedOut.hidden = true;
   els.passwordSetup.hidden = true;
   els.signedIn.hidden = false;
-  if (payload.hasAccess) {
-    els.statusText.textContent = 'premium プランの閲覧権限があります。';
-  } else if (state.billingProvider === 'fincode') {
-    els.statusText.textContent = '契約状態は保存されています。必要に応じてこのページから解約できます。';
-  } else {
-    els.statusText.textContent = '契約状態は保存されています。必要に応じて契約情報をご確認ください。';
-  }
+  els.statusText.textContent = payload.hasAccess
+    ? 'premium プランの閲覧権限があります。'
+    : '契約状態は保存されています。必要に応じて Stripe 側でお支払い情報をご確認ください。';
   els.accountEmail.textContent = payload.email || '-';
   els.accountPlanStatus.textContent = payload.subscriptionStatus || '-';
   els.accountExpiresAt.textContent = formatTimestamp(payload.accessExpiresAt);
@@ -118,13 +114,11 @@ function renderSignedIn(payload) {
   }
   if (els.openPortalButton) {
     els.openPortalButton.hidden = payload.canManageBilling === false;
-    els.openPortalButton.textContent = state.billingProvider === 'fincode' ? '解約する' : '支払い方法・解約';
   }
 }
 
 async function loadStatus() {
   const payload = await memberApi('/api/member/status');
-  state.billingProvider = String(payload.billingProvider || state.billingProvider || '');
   if (!payload.enabled) {
     renderSignedOut();
     showNotice(`会員機能はまだ設定中です。お問い合わせは ${membershipConfig.supportEmail} までお願いします。`);
@@ -151,7 +145,6 @@ async function completeCheckout(password = '') {
   }
   showNotice('購入内容を確認しました。premium プランをご利用いただけます。');
   renderSignedIn(payload);
-  els.signedIn.scrollIntoView({ behavior: 'smooth', block: 'start' });
   window.history.replaceState({}, '', '/account.html');
 }
 
@@ -178,9 +171,6 @@ els.loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
     showNotice('');
-    if (els.loginButton) {
-      els.loginButton.disabled = true;
-    }
     const payload = await memberApi('/api/member/login', {
       method: 'POST',
       body: {
@@ -189,14 +179,8 @@ els.loginForm.addEventListener('submit', async (event) => {
       },
     });
     renderSignedIn(payload);
-    showNotice('ログインしました。', 'info');
-    els.signedIn.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (error) {
     showNotice(error.message, 'error');
-  } finally {
-    if (els.loginButton) {
-      els.loginButton.disabled = false;
-    }
   }
 });
 
@@ -213,19 +197,9 @@ els.setupForm.addEventListener('submit', async (event) => {
 els.openPortalButton.addEventListener('click', async () => {
   try {
     showNotice('');
-    if (state.billingProvider === 'fincode') {
-      const confirmed = window.confirm('premium プランを解約します。よろしいですか。');
-      if (!confirmed) {
-        return;
-      }
-      const payload = await memberApi('/api/member/cancel-subscription', { method: 'POST' });
-      renderSignedIn(payload);
-      showNotice('解約手続きを受け付けました。', 'info');
-      return;
-    }
     const payload = await memberApi('/api/member/create-portal-session', { method: 'POST' });
     if (!payload.portalUrl) {
-      throw new Error('会員管理ページを開けませんでした。');
+      throw new Error('Stripe の会員管理ページを開けませんでした。');
     }
     window.location.href = payload.portalUrl;
   } catch (error) {
@@ -246,7 +220,7 @@ els.logoutButton.addEventListener('click', async () => {
 async function main() {
   try {
     if (new URLSearchParams(window.location.search).get('checkout') === 'cancelled') {
-      showNotice('購入手続きはキャンセルされました。', 'info');
+      showNotice('決済はキャンセルされました。', 'info');
     }
     if (state.checkoutSessionId) {
       await completeCheckout();
