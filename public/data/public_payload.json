@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-03-21T15:06:32Z",
+  "generated_at_utc": "2026-03-22T04:58:00Z",
   "race_date": "20260322",
   "races": [
     {
@@ -21,69 +21,32 @@
         {
           "rank": 1,
           "horse_num": 7,
-          "pred_ev_place": -0.9681456237398608,
-          "pred_score": 0.0318543762601393,
+          "pred_ev_place": -0.9586664061496066,
+          "pred_score": 0.0413335938503933,
           "odds_win": 5.5,
           "odds_place": 1.7,
           "horse_name": "ヨドノティアラ"
         },
         {
           "rank": 2,
-          "horse_num": 16,
-          "pred_ev_place": -0.981041972914282,
-          "pred_score": 0.018958027085718,
-          "odds_win": 9.0,
-          "odds_place": 2.3,
-          "horse_name": "ヘルヴィッツ"
+          "horse_num": 4,
+          "pred_ev_place": -0.9587959575836352,
+          "pred_score": 0.0412040424163647,
+          "odds_win": 2.1,
+          "odds_place": 1.2,
+          "horse_name": "デスサイズ"
         },
         {
           "rank": 3,
-          "horse_num": 14,
-          "pred_ev_place": -0.9818550643601106,
-          "pred_score": 0.0181449356398893,
-          "odds_win": 13.4,
-          "odds_place": 2.8,
-          "horse_name": "ワルキューレキング"
+          "horse_num": 15,
+          "pred_ev_place": -0.9679507114049896,
+          "pred_score": 0.0320492885950103,
+          "odds_win": 7.0,
+          "odds_place": 1.9,
+          "horse_name": "カンノンミッキー"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "10612",
-          "ev_est": 21.507350908689126,
-          "est_odds": 167641.7381117781,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "ハンナパール"
-            },
-            {
-              "horse_num": 6,
-              "horse_name": "パンジー"
-            },
-            {
-              "horse_num": 12,
-              "horse_name": "アクシズ"
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "106",
-          "ev_est": 6.230668833022416,
-          "est_odds": 9867.978380060127,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "ハンナパール"
-            },
-            {
-              "horse_num": 6,
-              "horse_name": "パンジー"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "06262802",
@@ -103,61 +66,33 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 7,
-          "pred_ev_place": -0.9782151862651398,
-          "pred_score": 0.0217848137348601,
-          "odds_win": 7.1,
-          "odds_place": 1.9,
-          "horse_name": "ラヴィニアパーク"
+          "horse_num": 3,
+          "pred_ev_place": -0.9508158337043362,
+          "pred_score": 0.0491841662956638,
+          "odds_win": 3.9,
+          "odds_place": 1.5,
+          "horse_name": "イーグルロック"
         },
         {
           "rank": 2,
-          "horse_num": 10,
-          "pred_ev_place": -0.983468929658848,
-          "pred_score": 0.0165310703411518,
-          "odds_win": 68.6,
-          "odds_place": 11.2,
-          "horse_name": "クアッドフォルツァ"
+          "horse_num": 6,
+          "pred_ev_place": -0.953144473990458,
+          "pred_score": 0.0468555260095421,
+          "odds_win": 2.4,
+          "odds_place": 1.3,
+          "horse_name": "アイデアユー"
         },
         {
           "rank": 3,
-          "horse_num": 1,
-          "pred_ev_place": -0.9836401930368048,
-          "pred_score": 0.016359806963195,
-          "odds_win": 24.7,
-          "odds_place": 4.6,
-          "horse_name": "プリンセスダーコ"
+          "horse_num": 7,
+          "pred_ev_place": -0.9668169626381264,
+          "pred_score": 0.0331830373618736,
+          "odds_win": 7.1,
+          "odds_place": 1.9,
+          "horse_name": "ラヴィニアパーク"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "10510",
-          "ev_est": 39.40701591028563,
-          "est_odds": 174378.4729313303,
-          "horses": [
-            {
-              "horse_num": 10510
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "510",
-          "ev_est": 21.230968143691577,
-          "est_odds": 26454.23213767196,
-          "horses": [
-            {
-              "horse_num": 5,
-              "horse_name": "ネオアカジョウ"
-            },
-            {
-              "horse_num": 10,
-              "horse_name": "クアッドフォルツァ"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "06262803",
@@ -177,70 +112,33 @@
       "picks": [
         {
           "rank": 1,
+          "horse_num": 9,
+          "pred_ev_place": -0.9598184220024508,
+          "pred_score": 0.040181577997549,
+          "odds_win": 4.1,
+          "odds_place": 1.6,
+          "horse_name": "モーゲンセン"
+        },
+        {
+          "rank": 2,
           "horse_num": 8,
-          "pred_ev_place": -0.9753876230196082,
-          "pred_score": 0.0246123769803917,
+          "pred_ev_place": -0.962886149199574,
+          "pred_score": 0.0371138508004259,
           "odds_win": 4.1,
           "odds_place": 1.6,
           "horse_name": "ライヴレッドアイ"
         },
         {
-          "rank": 2,
-          "horse_num": 4,
-          "pred_ev_place": -0.982704165211263,
-          "pred_score": 0.0172958347887369,
-          "odds_win": 24.2,
-          "odds_place": 5.4,
-          "horse_name": "ジェイエルキャリア"
-        },
-        {
           "rank": 3,
-          "horse_num": 5,
-          "pred_ev_place": -0.9838937799249544,
-          "pred_score": 0.0161062200750455,
-          "odds_win": 19.1,
-          "odds_place": 4.5,
-          "horse_name": "ビップムーラン"
+          "horse_num": 2,
+          "pred_ev_place": -0.9753276529291992,
+          "pred_score": 0.0246723470708009,
+          "odds_win": 3.8,
+          "odds_place": 1.5,
+          "horse_name": "タカスタカスタカス"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "10414",
-          "ev_est": 17.169703850546817,
-          "est_odds": 80374.02672526195,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "ファンシーズ"
-            },
-            {
-              "horse_num": 4,
-              "horse_name": "ジェイエルキャリア"
-            },
-            {
-              "horse_num": 14,
-              "horse_name": "ルクスポップスター"
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "414",
-          "ev_est": 5.853139161973585,
-          "est_odds": 5528.046411960612,
-          "horses": [
-            {
-              "horse_num": 4,
-              "horse_name": "ジェイエルキャリア"
-            },
-            {
-              "horse_num": 14,
-              "horse_name": "ルクスポップスター"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "06262804",
@@ -261,51 +159,56 @@
         {
           "rank": 1,
           "horse_num": 10,
-          "pred_ev_place": -0.960471863067622,
-          "pred_score": 0.039528136932378,
+          "pred_ev_place": -0.9395517281451016,
+          "pred_score": 0.0604482718548985,
           "odds_win": 11.8,
           "odds_place": 2.8,
           "horse_name": "サラフィエル"
         },
         {
           "rank": 2,
-          "horse_num": 4,
-          "pred_ev_place": -0.9799050270019026,
-          "pred_score": 0.0200949729980973,
-          "odds_win": 40.0,
-          "odds_place": 7.7,
-          "horse_name": "クラウンウルル"
+          "horse_num": 7,
+          "pred_ev_place": -0.9537283927581628,
+          "pred_score": 0.0462716072418372,
+          "odds_win": 2.7,
+          "odds_place": 1.3,
+          "horse_name": "バラジ"
         },
         {
           "rank": 3,
-          "horse_num": 14,
-          "pred_ev_place": -0.982341520874494,
-          "pred_score": 0.0176584791255061,
-          "odds_win": 29.0,
-          "odds_place": 5.8,
-          "horse_name": "モズバンディット"
+          "horse_num": 8,
+          "pred_ev_place": -0.9708262035092712,
+          "pred_score": 0.0291737964907287,
+          "odds_win": 4.4,
+          "odds_place": 1.6,
+          "horse_name": "タガノバルコス"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "30405",
-          "ev_est": 49.578116720628266,
-          "est_odds": 222938.3399897169,
+          "combo": "30414",
+          "ev_est": 11.525349982028608,
+          "est_odds": 129304.23719403578,
           "horses": [
             {
-              "horse_num": 30405
+              "horse_num": 30414
             }
           ]
         },
         {
           "bet_type": "wide",
-          "combo": "305",
-          "ev_est": 15.63325958880269,
-          "est_odds": 20544.404460280803,
+          "combo": "410",
+          "ev_est": 3.3597880706614456,
+          "est_odds": 3543.4988813092323,
           "horses": [
             {
-              "horse_num": 305
+              "horse_num": 4,
+              "horse_name": "クラウンウルル"
+            },
+            {
+              "horse_num": 10,
+              "horse_name": "サラフィエル"
             }
           ]
         }
@@ -330,8 +233,8 @@
         {
           "rank": 1,
           "horse_num": 1,
-          "pred_ev_place": -0.9658681081096128,
-          "pred_score": 0.0341318918903872,
+          "pred_ev_place": -0.9679724417090833,
+          "pred_score": 0.0320275582909168,
           "odds_win": 8.1,
           "odds_place": 2.1,
           "horse_name": "シヴィータス"
@@ -339,60 +242,23 @@
         {
           "rank": 2,
           "horse_num": 16,
-          "pred_ev_place": -0.9800947329761384,
-          "pred_score": 0.0199052670238616,
+          "pred_ev_place": -0.9686433521132878,
+          "pred_score": 0.0313566478867122,
           "odds_win": 21.5,
           "odds_place": 4.0,
           "horse_name": "リーデレクオーレ"
         },
         {
           "rank": 3,
-          "horse_num": 8,
-          "pred_ev_place": -0.9856211154728952,
-          "pred_score": 0.0143788845271046,
-          "odds_win": 12.2,
-          "odds_place": 2.6,
-          "horse_name": "フォワードシャッセ"
+          "horse_num": 9,
+          "pred_ev_place": -0.9824270980495482,
+          "pred_score": 0.0175729019504518,
+          "odds_win": 13.7,
+          "odds_place": 2.8,
+          "horse_name": "マイネルトレマーズ"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "121516",
-          "ev_est": 6.272418447154643,
-          "est_odds": 53926.547223207286,
-          "horses": [
-            {
-              "horse_num": 12,
-              "horse_name": "ニシノカルラ"
-            },
-            {
-              "horse_num": 15,
-              "horse_name": "ベルバード"
-            },
-            {
-              "horse_num": 16,
-              "horse_name": "リーデレクオーレ"
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "1216",
-          "ev_est": 5.087724544135991,
-          "est_odds": 8403.726575229246,
-          "horses": [
-            {
-              "horse_num": 12,
-              "horse_name": "ニシノカルラ"
-            },
-            {
-              "horse_num": 16,
-              "horse_name": "リーデレクオーレ"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "06262806",
@@ -412,52 +278,57 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 4,
-          "pred_ev_place": -0.9762795455054613,
-          "pred_score": 0.0237204544945388,
-          "odds_win": 7.0,
-          "odds_place": 2.0,
-          "horse_name": "ニュークリアス"
+          "horse_num": 6,
+          "pred_ev_place": -0.9403747563746626,
+          "pred_score": 0.0596252436253373,
+          "odds_win": 4.8,
+          "odds_place": 1.7,
+          "horse_name": "プレイザリード"
         },
         {
           "rank": 2,
           "horse_num": 11,
-          "pred_ev_place": -0.9840550012169432,
-          "pred_score": 0.0159449987830567,
+          "pred_ev_place": -0.9753000077537888,
+          "pred_score": 0.0246999922462113,
           "odds_win": 18.3,
           "odds_place": 3.8,
           "horse_name": "コスモアンタレス"
         },
         {
           "rank": 3,
-          "horse_num": 18,
-          "pred_ev_place": -0.984261363379912,
-          "pred_score": 0.015738636620088,
-          "odds_win": 21.1,
-          "odds_place": 4.3,
-          "horse_name": "エラルディーク"
+          "horse_num": 4,
+          "pred_ev_place": -0.9762795455054613,
+          "pred_score": 0.0237204544945388,
+          "odds_win": 7.0,
+          "odds_place": 2.0,
+          "horse_name": "ニュークリアス"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "30913",
-          "ev_est": 7.625684449536827,
-          "est_odds": 90178.66897840552,
+          "combo": "30811",
+          "ev_est": 4.034514634712816,
+          "est_odds": 47818.446484275744,
           "horses": [
             {
-              "horse_num": 30913
+              "horse_num": 30811
             }
           ]
         },
         {
           "bet_type": "wide",
-          "combo": "309",
-          "ev_est": 2.541326708041721,
-          "est_odds": 5305.611218837136,
+          "combo": "311",
+          "ev_est": 2.4136337017263063,
+          "est_odds": 4114.555639098187,
           "horses": [
             {
-              "horse_num": 309
+              "horse_num": 3,
+              "horse_name": "フューチャプライム"
+            },
+            {
+              "horse_num": 11,
+              "horse_name": "コスモアンタレス"
             }
           ]
         }
@@ -482,26 +353,26 @@
         {
           "rank": 1,
           "horse_num": 4,
-          "pred_ev_place": -0.9669639830484285,
-          "pred_score": 0.0330360169515715,
+          "pred_ev_place": -0.9694655462478146,
+          "pred_score": 0.0305344537521854,
           "odds_win": 1.9,
           "odds_place": 1.2,
           "horse_name": "プラウディッツ"
         },
         {
           "rank": 2,
-          "horse_num": 6,
-          "pred_ev_place": -0.9719472946021698,
-          "pred_score": 0.0280527053978302,
-          "odds_win": 15.7,
-          "odds_place": 2.3,
-          "horse_name": "マイネルマスター"
+          "horse_num": 7,
+          "pred_ev_place": -0.981312574228496,
+          "pred_score": 0.0186874257715039,
+          "odds_win": 7.3,
+          "odds_place": 1.5,
+          "horse_name": "ノーウェアマン"
         },
         {
           "rank": 3,
           "horse_num": 2,
-          "pred_ev_place": -0.9732358358710386,
-          "pred_score": 0.0267641641289614,
+          "pred_ev_place": -0.9813170232197534,
+          "pred_score": 0.0186829767802465,
           "odds_win": 2.6,
           "odds_place": 1.2,
           "horse_name": "ラディアントスター"
@@ -511,7 +382,7 @@
         {
           "bet_type": "wide",
           "combo": "506",
-          "ev_est": 1.6385383678068908,
+          "ev_est": 1.6566751873745091,
           "est_odds": 1929.572231223921,
           "horses": [
             {
@@ -539,70 +410,33 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 10,
-          "pred_ev_place": -0.9749533471290456,
-          "pred_score": 0.0250466528709543,
-          "odds_win": 12.9,
-          "odds_place": 2.9,
-          "horse_name": "ハクシンブライアン"
+          "horse_num": 4,
+          "pred_ev_place": -0.9619802492440092,
+          "pred_score": 0.0380197507559908,
+          "odds_win": 4.6,
+          "odds_place": 1.6,
+          "horse_name": "エデルクローネ"
         },
         {
           "rank": 2,
-          "horse_num": 3,
-          "pred_ev_place": -0.979206283319034,
-          "pred_score": 0.0207937166809658,
-          "odds_win": 15.9,
-          "odds_place": 3.4,
-          "horse_name": "テルケンユミクイン"
+          "horse_num": 16,
+          "pred_ev_place": -0.9631158409873956,
+          "pred_score": 0.0368841590126043,
+          "odds_win": 2.5,
+          "odds_place": 1.3,
+          "horse_name": "ドゥマーヴェリック"
         },
         {
           "rank": 3,
-          "horse_num": 12,
-          "pred_ev_place": -0.9813964855340592,
-          "pred_score": 0.0186035144659408,
-          "odds_win": 30.6,
-          "odds_place": 5.8,
-          "horse_name": "コルヴィル"
+          "horse_num": 8,
+          "pred_ev_place": -0.9704428021125874,
+          "pred_score": 0.0295571978874126,
+          "odds_win": 4.4,
+          "odds_place": 1.5,
+          "horse_name": "オウケンシルヴァー"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "51415",
-          "ev_est": 16.25381881978705,
-          "est_odds": 206965.63621918,
-          "horses": [
-            {
-              "horse_num": 5,
-              "horse_name": "ボナーテソーロ"
-            },
-            {
-              "horse_num": 14,
-              "horse_name": "グラスビジョン"
-            },
-            {
-              "horse_num": 15,
-              "horse_name": "ミツカネヴィーナス"
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "1415",
-          "ev_est": 6.057014136501098,
-          "est_odds": 14353.807029414123,
-          "horses": [
-            {
-              "horse_num": 14,
-              "horse_name": "グラスビジョン"
-            },
-            {
-              "horse_num": 15,
-              "horse_name": "ミツカネヴィーナス"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "06262809",
@@ -624,46 +458,46 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 6,
-          "pred_ev_place": -0.9707438428002214,
-          "pred_score": 0.0292561571997785,
-          "odds_win": 7.6,
-          "odds_place": 2.1,
-          "horse_name": "イマージョン"
+          "horse_num": 2,
+          "pred_ev_place": -0.9616372250165532,
+          "pred_score": 0.0383627749834468,
+          "odds_win": 3.0,
+          "odds_place": 1.4,
+          "horse_name": "マサノユニコーン"
         },
         {
           "rank": 2,
           "horse_num": 13,
-          "pred_ev_place": -0.9767598703074244,
-          "pred_score": 0.0232401296925757,
+          "pred_ev_place": -0.9675850442500756,
+          "pred_score": 0.0324149557499243,
           "odds_win": 3.3,
           "odds_place": 1.4,
           "horse_name": "カネショウレジェン"
         },
         {
           "rank": 3,
-          "horse_num": 16,
-          "pred_ev_place": -0.9793859256877422,
-          "pred_score": 0.0206140743122578,
-          "odds_win": 75.0,
-          "odds_place": 12.9,
-          "horse_name": "シュヴァルツリーベ"
+          "horse_num": 11,
+          "pred_ev_place": -0.9785868785477424,
+          "pred_score": 0.0214131214522577,
+          "odds_win": 36.6,
+          "odds_place": 6.8,
+          "horse_name": "キボウノホシ"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "11116",
-          "ev_est": 20.815947035558917,
-          "est_odds": 158297.30355254255,
+          "combo": "71116",
+          "ev_est": 10.383182914307117,
+          "est_odds": 114708.19098010327,
           "horses": [
+            {
+              "horse_num": 7,
+              "horse_name": "レイユール"
+            },
             {
               "horse_num": 11,
               "horse_name": "キボウノホシ"
-            },
-            {
-              "horse_num": 1,
-              "horse_name": "ウォルラス"
             },
             {
               "horse_num": 16,
@@ -673,17 +507,17 @@
         },
         {
           "bet_type": "wide",
-          "combo": "1116",
-          "ev_est": 11.24495157210998,
-          "est_odds": 15633.036870492586,
+          "combo": "711",
+          "ev_est": 3.1616173391908062,
+          "est_odds": 6059.316616469993,
           "horses": [
+            {
+              "horse_num": 7,
+              "horse_name": "レイユール"
+            },
             {
               "horse_num": 11,
               "horse_name": "キボウノホシ"
-            },
-            {
-              "horse_num": 16,
-              "horse_name": "シュヴァルツリーベ"
             }
           ]
         }
@@ -709,33 +543,45 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 8,
-          "pred_ev_place": -0.9557552112086356,
-          "pred_score": 0.0442447887913645,
-          "odds_win": 2.6,
-          "odds_place": 1.3,
-          "horse_name": "エストゥペンダ"
-        },
-        {
-          "rank": 2,
           "horse_num": 5,
-          "pred_ev_place": -0.9570433737457852,
-          "pred_score": 0.0429566262542147,
+          "pred_ev_place": -0.9550627333932228,
+          "pred_score": 0.0449372666067771,
           "odds_win": 5.5,
           "odds_place": 1.7,
           "horse_name": "フィーリウス"
         },
         {
+          "rank": 2,
+          "horse_num": 8,
+          "pred_ev_place": -0.9653312016558936,
+          "pred_score": 0.0346687983441065,
+          "odds_win": 2.6,
+          "odds_place": 1.3,
+          "horse_name": "エストゥペンダ"
+        },
+        {
           "rank": 3,
           "horse_num": 4,
-          "pred_ev_place": -0.9606775796638396,
-          "pred_score": 0.0393224203361602,
+          "pred_ev_place": -0.9747858797038372,
+          "pred_score": 0.0252141202961628,
           "odds_win": 3.8,
           "odds_place": 1.5,
           "horse_name": "ジュタ"
         }
       ],
-      "tickets": []
+      "tickets": [
+        {
+          "bet_type": "wide",
+          "combo": "506",
+          "ev_est": 1.7492220424043974,
+          "est_odds": 981.6643111979936,
+          "horses": [
+            {
+              "horse_num": 506
+            }
+          ]
+        }
+      ]
     },
     {
       "race_key": "06262811",
@@ -757,66 +603,50 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 7,
-          "pred_ev_place": -0.9605189169220004,
-          "pred_score": 0.0394810830779996,
-          "odds_win": 5.3,
-          "odds_place": 1.7,
-          "horse_name": "エートラックス"
-        },
-        {
-          "rank": 2,
           "horse_num": 10,
-          "pred_ev_place": -0.9766653267593376,
-          "pred_score": 0.0233346732406622,
+          "pred_ev_place": -0.9370369606672482,
+          "pred_score": 0.0629630393327518,
           "odds_win": 3.7,
           "odds_place": 1.5,
           "horse_name": "ドラゴンウェルズ"
         },
         {
+          "rank": 2,
+          "horse_num": 14,
+          "pred_ev_place": -0.962360697391989,
+          "pred_score": 0.0376393026080109,
+          "odds_win": 2.8,
+          "odds_place": 1.3,
+          "horse_name": "エコロアゼル"
+        },
+        {
           "rank": 3,
-          "horse_num": 4,
-          "pred_ev_place": -0.9803250613386054,
-          "pred_score": 0.0196749386613945,
-          "odds_win": 13.9,
-          "odds_place": 3.1,
-          "horse_name": "ユキマル"
+          "horse_num": 7,
+          "pred_ev_place": -0.97092358747828,
+          "pred_score": 0.0290764125217198,
+          "odds_win": 5.3,
+          "odds_place": 1.7,
+          "horse_name": "エートラックス"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "10213",
-          "ev_est": 14.870080591043498,
-          "est_odds": 118124.31017636528,
+          "combo": "10913",
+          "ev_est": 3.432981013018917,
+          "est_odds": 43579.84258933866,
           "horses": [
             {
               "horse_num": 10,
               "horse_name": "ドラゴンウェルズ"
             },
             {
-              "horse_num": 2,
-              "horse_name": "テイエムトッキュウ"
+              "horse_num": 9,
+              "horse_name": "ブレーザー"
             },
             {
               "horse_num": 13,
               "horse_name": "エコロガイア"
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "102",
-          "ev_est": 7.239362520880832,
-          "est_odds": 17168.940857804624,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "ドラゴンウェルズ"
-            },
-            {
-              "horse_num": 2,
-              "horse_name": "テイエムトッキュウ"
             }
           ]
         }
@@ -840,61 +670,33 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 16,
-          "pred_ev_place": -0.9706311672408374,
-          "pred_score": 0.0293688327591625,
-          "odds_win": 7.1,
-          "odds_place": 2.3,
-          "horse_name": "コンティオ"
-        },
-        {
-          "rank": 2,
           "horse_num": 4,
-          "pred_ev_place": -0.9791145358217864,
-          "pred_score": 0.0208854641782136,
+          "pred_ev_place": -0.969644187154826,
+          "pred_score": 0.030355812845174,
           "odds_win": 12.6,
           "odds_place": 3.2,
           "horse_name": "エルフストラック"
         },
         {
-          "rank": 3,
-          "horse_num": 11,
-          "pred_ev_place": -0.9801736019865076,
-          "pred_score": 0.0198263980134922,
-          "odds_win": 26.7,
-          "odds_place": 6.0,
-          "horse_name": "アルドール"
-        }
-      ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "10506",
-          "ev_est": 32.55081658385932,
-          "est_odds": 309416.01807625,
-          "horses": [
-            {
-              "horse_num": 10506
-            }
-          ]
+          "rank": 2,
+          "horse_num": 6,
+          "pred_ev_place": -0.9741058486005711,
+          "pred_score": 0.0258941513994287,
+          "odds_win": 30.6,
+          "odds_place": 6.7,
+          "horse_name": "ミラクルキャッツ"
         },
         {
-          "bet_type": "wide",
-          "combo": "105",
-          "ev_est": 14.117794019348931,
-          "est_odds": 32816.86032229702,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "フィールオーサム"
-            },
-            {
-              "horse_num": 5,
-              "horse_name": "デファイ"
-            }
-          ]
+          "rank": 3,
+          "horse_num": 16,
+          "pred_ev_place": -0.9743753771281436,
+          "pred_score": 0.0256246228718565,
+          "odds_win": 7.1,
+          "odds_place": 2.3,
+          "horse_name": "コンティオ"
         }
-      ]
+      ],
+      "tickets": []
     },
     {
       "race_key": "07261401",
@@ -914,70 +716,33 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 5,
-          "pred_ev_place": -0.9743949081708784,
-          "pred_score": 0.0256050918291217,
-          "odds_win": 13.5,
-          "odds_place": 3.1,
-          "horse_name": "コイバナ"
+          "horse_num": 12,
+          "pred_ev_place": -0.9628495507788276,
+          "pred_score": 0.0371504492211722,
+          "odds_win": 2.5,
+          "odds_place": 1.3,
+          "horse_name": "エアトベーレ"
         },
         {
           "rank": 2,
-          "horse_num": 11,
-          "pred_ev_place": -0.9794589503899732,
-          "pred_score": 0.0205410496100266,
-          "odds_win": 12.2,
-          "odds_place": 2.9,
-          "horse_name": "レステダンルヴァン"
-        },
-        {
-          "rank": 3,
           "horse_num": 10,
-          "pred_ev_place": -0.980189770851496,
-          "pred_score": 0.0198102291485039,
+          "pred_ev_place": -0.9768188564853448,
+          "pred_score": 0.0231811435146552,
           "odds_win": 5.8,
           "odds_place": 1.9,
           "horse_name": "セレーノ"
-        }
-      ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "10314",
-          "ev_est": 5.034775932945612,
-          "est_odds": 33781.546084663016,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "セレーノ"
-            },
-            {
-              "horse_num": 3,
-              "horse_name": "ライヴマルガリータ"
-            },
-            {
-              "horse_num": 14,
-              "horse_name": "エボニードール"
-            }
-          ]
         },
         {
-          "bet_type": "wide",
-          "combo": "314",
-          "ev_est": 3.14409848540576,
-          "est_odds": 4443.687034961998,
-          "horses": [
-            {
-              "horse_num": 3,
-              "horse_name": "ライヴマルガリータ"
-            },
-            {
-              "horse_num": 14,
-              "horse_name": "エボニードール"
-            }
-          ]
+          "rank": 3,
+          "horse_num": 5,
+          "pred_ev_place": -0.9777102850564672,
+          "pred_score": 0.0222897149435328,
+          "odds_win": 13.5,
+          "odds_place": 3.1,
+          "horse_name": "コイバナ"
         }
-      ]
+      ],
+      "tickets": []
     },
     {
       "race_key": "07261402",
@@ -998,8 +763,8 @@
         {
           "rank": 1,
           "horse_num": 14,
-          "pred_ev_place": -0.965857680982915,
-          "pred_score": 0.0341423190170849,
+          "pred_ev_place": -0.9685935280175512,
+          "pred_score": 0.0314064719824488,
           "odds_win": 2.9,
           "odds_place": 1.4,
           "horse_name": "メイショウライゴー"
@@ -1007,46 +772,23 @@
         {
           "rank": 2,
           "horse_num": 4,
-          "pred_ev_place": -0.9723387234066438,
-          "pred_score": 0.0276612765933561,
+          "pred_ev_place": -0.9697963550725932,
+          "pred_score": 0.0302036449274069,
           "odds_win": 4.2,
           "odds_place": 1.7,
           "horse_name": "スタームーンナイト"
         },
         {
           "rank": 3,
-          "horse_num": 6,
-          "pred_ev_place": -0.9797466410054754,
-          "pred_score": 0.0202533589945246,
-          "odds_win": 28.7,
-          "odds_place": 5.8,
-          "horse_name": "ジュンクロノシップ"
+          "horse_num": 1,
+          "pred_ev_place": -0.979475938172042,
+          "pred_score": 0.0205240618279579,
+          "odds_win": 9.1,
+          "odds_place": 2.5,
+          "horse_name": "メイショウセンドウ"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "60815",
-          "ev_est": 8.09193558307955,
-          "est_odds": 42790.43765699924,
-          "horses": [
-            {
-              "horse_num": 60815
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "608",
-          "ev_est": 5.795531885837482,
-          "est_odds": 7118.608947903385,
-          "horses": [
-            {
-              "horse_num": 608
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "07261403",
@@ -1066,33 +808,70 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 6,
-          "pred_ev_place": -0.9681539130453478,
-          "pred_score": 0.0318460869546521,
-          "odds_win": 6.4,
-          "odds_place": 2.2,
-          "horse_name": "リアライズブライト"
-        },
-        {
-          "rank": 2,
           "horse_num": 10,
-          "pred_ev_place": -0.9687289896054344,
-          "pred_score": 0.0312710103945654,
+          "pred_ev_place": -0.9500507654053856,
+          "pred_score": 0.0499492345946143,
           "odds_win": 4.3,
           "odds_place": 1.7,
           "horse_name": "ジーティーピカソ"
         },
         {
-          "rank": 3,
-          "horse_num": 3,
-          "pred_ev_place": -0.971462282444421,
-          "pred_score": 0.0285377175555789,
-          "odds_win": 4.8,
+          "rank": 2,
+          "horse_num": 12,
+          "pred_ev_place": -0.9632705547301904,
+          "pred_score": 0.0367294452698097,
+          "odds_win": 4.7,
           "odds_place": 1.8,
-          "horse_name": "ライヴジントニック"
+          "horse_name": "リバーソニック"
+        },
+        {
+          "rank": 3,
+          "horse_num": 6,
+          "pred_ev_place": -0.9713553851797746,
+          "pred_score": 0.0286446148202254,
+          "odds_win": 6.4,
+          "odds_place": 2.2,
+          "horse_name": "リアライズブライト"
         }
       ],
-      "tickets": []
+      "tickets": [
+        {
+          "bet_type": "sanrenpuku",
+          "combo": "131415",
+          "ev_est": 3.364869345275716,
+          "est_odds": 43671.54975543153,
+          "horses": [
+            {
+              "horse_num": 13,
+              "horse_name": "ヴァンドゥーヴル"
+            },
+            {
+              "horse_num": 14,
+              "horse_name": "ルーナディサングエ"
+            },
+            {
+              "horse_num": 15,
+              "horse_name": "タイキジュビリー"
+            }
+          ]
+        },
+        {
+          "bet_type": "wide",
+          "combo": "1315",
+          "ev_est": 1.6019949280573331,
+          "est_odds": 3893.3473726416446,
+          "horses": [
+            {
+              "horse_num": 13,
+              "horse_name": "ヴァンドゥーヴル"
+            },
+            {
+              "horse_num": 15,
+              "horse_name": "タイキジュビリー"
+            }
+          ]
+        }
+      ]
     },
     {
       "race_key": "07261404",
@@ -1112,66 +891,52 @@
       "picks": [
         {
           "rank": 1,
+          "horse_num": 10,
+          "pred_ev_place": -0.9596148401409574,
+          "pred_score": 0.0403851598590425,
+          "odds_win": 2.8,
+          "odds_place": 1.4,
+          "horse_name": "ウィスカーパッド"
+        },
+        {
+          "rank": 2,
           "horse_num": 1,
-          "pred_ev_place": -0.9439174443194124,
-          "pred_score": 0.0560825556805876,
+          "pred_ev_place": -0.967617817295074,
+          "pred_score": 0.0323821827049261,
           "odds_win": 4.9,
           "odds_place": 1.7,
           "horse_name": "コティノス"
         },
         {
-          "rank": 2,
+          "rank": 3,
           "horse_num": 15,
           "pred_ev_place": -0.974641785711233,
           "pred_score": 0.0253582142887669,
           "odds_win": 15.1,
           "odds_place": 3.5,
           "horse_name": "ディープマウンテン"
-        },
-        {
-          "rank": 3,
-          "horse_num": 6,
-          "pred_ev_place": -0.9772577864968468,
-          "pred_score": 0.0227422135031533,
-          "odds_win": 19.6,
-          "odds_place": 4.4,
-          "horse_name": "メイショウケンゴウ"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "91213",
-          "ev_est": 67.76757395778637,
-          "est_odds": 347451.4492724381,
+          "combo": "60913",
+          "ev_est": 12.785809217610652,
+          "est_odds": 99920.67822213906,
           "horses": [
             {
-              "horse_num": 9,
-              "horse_name": "ロスニーニョス"
-            },
-            {
-              "horse_num": 12,
-              "horse_name": "ベジョータ"
-            },
-            {
-              "horse_num": 13,
-              "horse_name": "スターアライズ"
+              "horse_num": 60913
             }
           ]
         },
         {
           "bet_type": "wide",
-          "combo": "912",
-          "ev_est": 20.073809686840235,
-          "est_odds": 26286.450876178085,
+          "combo": "609",
+          "ev_est": 4.834971925021754,
+          "est_odds": 7559.502212757096,
           "horses": [
             {
-              "horse_num": 9,
-              "horse_name": "ロスニーニョス"
-            },
-            {
-              "horse_num": 12,
-              "horse_name": "ベジョータ"
+              "horse_num": 609
             }
           ]
         }
@@ -1196,29 +961,29 @@
         {
           "rank": 1,
           "horse_num": 9,
-          "pred_ev_place": -0.9707462457904604,
-          "pred_score": 0.0292537542095394,
+          "pred_ev_place": -0.966461965741702,
+          "pred_score": 0.0335380342582979,
           "odds_win": 12.8,
           "odds_place": 3.2,
           "horse_name": "エフティヴェント"
         },
         {
           "rank": 2,
+          "horse_num": 6,
+          "pred_ev_place": -0.970533170589796,
+          "pred_score": 0.029466829410204,
+          "odds_win": 3.3,
+          "odds_place": 1.5,
+          "horse_name": "ビッグヒーロー"
+        },
+        {
+          "rank": 3,
           "horse_num": 14,
           "pred_ev_place": -0.9720786713103396,
           "pred_score": 0.0279213286896604,
           "odds_win": 10.8,
           "odds_place": 2.8,
           "horse_name": "ブラックジャック"
-        },
-        {
-          "rank": 3,
-          "horse_num": 11,
-          "pred_ev_place": -0.981104152992202,
-          "pred_score": 0.0188958470077978,
-          "odds_win": 20.2,
-          "odds_place": 4.7,
-          "horse_name": "エルミー"
         }
       ],
       "tickets": []
@@ -1242,61 +1007,52 @@
         {
           "rank": 1,
           "horse_num": 6,
-          "pred_ev_place": -0.9562818861662006,
-          "pred_score": 0.0437181138337994,
+          "pred_ev_place": -0.957630378176204,
+          "pred_score": 0.0423696218237961,
           "odds_win": 12.5,
           "odds_place": 3.0,
           "horse_name": "ダノンフィオーレ"
         },
         {
           "rank": 2,
-          "horse_num": 7,
-          "pred_ev_place": -0.969563607286834,
-          "pred_score": 0.0304363927131661,
-          "odds_win": 14.4,
-          "odds_place": 3.4,
-          "horse_name": "シェーンシュティア"
+          "horse_num": 2,
+          "pred_ev_place": -0.9711513427386724,
+          "pred_score": 0.0288486572613276,
+          "odds_win": 2.5,
+          "odds_place": 1.4,
+          "horse_name": "サラスヴァティー"
         },
         {
           "rank": 3,
-          "horse_num": 17,
-          "pred_ev_place": -0.9754433593848916,
-          "pred_score": 0.0245566406151083,
-          "odds_win": 33.5,
-          "odds_place": 6.8,
-          "horse_name": "コスモイシュタル"
+          "horse_num": 7,
+          "pred_ev_place": -0.9753151196960264,
+          "pred_score": 0.0246848803039736,
+          "odds_win": 14.4,
+          "odds_place": 3.4,
+          "horse_name": "シェーンシュティア"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "61317",
-          "ev_est": 6.901262005771315,
-          "est_odds": 46470.16539185288,
+          "combo": "30617",
+          "ev_est": 3.760526706603308,
+          "est_odds": 26265.74565626468,
           "horses": [
             {
-              "horse_num": 6,
-              "horse_name": "ダノンフィオーレ"
-            },
-            {
-              "horse_num": 13,
-              "horse_name": "ブラックドレス"
-            },
-            {
-              "horse_num": 17,
-              "horse_name": "コスモイシュタル"
+              "horse_num": 30617
             }
           ]
         },
         {
           "bet_type": "wide",
-          "combo": "1317",
-          "ev_est": 5.092608162152454,
-          "est_odds": 10749.66877110267,
+          "combo": "617",
+          "ev_est": 3.332571066687726,
+          "est_odds": 3505.3267731856536,
           "horses": [
             {
-              "horse_num": 13,
-              "horse_name": "ブラックドレス"
+              "horse_num": 6,
+              "horse_name": "ダノンフィオーレ"
             },
             {
               "horse_num": 17,
@@ -1324,57 +1080,52 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 11,
-          "pred_ev_place": -0.966752032084091,
-          "pred_score": 0.033247967915909,
-          "odds_win": 19.9,
-          "odds_place": 3.7,
-          "horse_name": "ペロ"
+          "horse_num": 12,
+          "pred_ev_place": -0.9486164013911662,
+          "pred_score": 0.0513835986088337,
+          "odds_win": 3.5,
+          "odds_place": 1.4,
+          "horse_name": "ロードアルディート"
         },
         {
           "rank": 2,
-          "horse_num": 6,
-          "pred_ev_place": -0.9789903730562416,
-          "pred_score": 0.0210096269437582,
-          "odds_win": 34.0,
-          "odds_place": 5.8,
-          "horse_name": "ハイグッドワールド"
+          "horse_num": 5,
+          "pred_ev_place": -0.9636088469580156,
+          "pred_score": 0.0363911530419842,
+          "odds_win": 2.4,
+          "odds_place": 1.2,
+          "horse_name": "レヴァンテシチー"
         },
         {
           "rank": 3,
-          "horse_num": 8,
-          "pred_ev_place": -0.9804194885801948,
-          "pred_score": 0.0195805114198051,
-          "odds_win": 31.3,
-          "odds_place": 5.4,
-          "horse_name": "コスモシェルベット"
+          "horse_num": 9,
+          "pred_ev_place": -0.9744902427757416,
+          "pred_score": 0.0255097572242583,
+          "odds_win": 5.4,
+          "odds_place": 1.6,
+          "horse_name": "ローズマイスター"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "60814",
-          "ev_est": 11.3266949339083,
-          "est_odds": 64462.43899973678,
+          "combo": "10608",
+          "ev_est": 3.1459413415147264,
+          "est_odds": 42409.49934193209,
           "horses": [
             {
-              "horse_num": 60814
+              "horse_num": 10608
             }
           ]
         },
         {
           "bet_type": "wide",
-          "combo": "614",
-          "ev_est": 5.833206035679117,
-          "est_odds": 8040.50583194672,
+          "combo": "608",
+          "ev_est": 2.1771126664525093,
+          "est_odds": 5712.99098585688,
           "horses": [
             {
-              "horse_num": 6,
-              "horse_name": "ハイグッドワールド"
-            },
-            {
-              "horse_num": 14,
-              "horse_name": "ブルーストレイル"
+              "horse_num": 608
             }
           ]
         }
@@ -1398,33 +1149,50 @@
       "picks": [
         {
           "rank": 1,
+          "horse_num": 12,
+          "pred_ev_place": -0.9578517174709792,
+          "pred_score": 0.0421482825290209,
+          "odds_win": 2.9,
+          "odds_place": 1.3,
+          "horse_name": "チムグクル"
+        },
+        {
+          "rank": 2,
           "horse_num": 14,
-          "pred_ev_place": -0.9747063069251376,
-          "pred_score": 0.0252936930748625,
+          "pred_ev_place": -0.9698855157890196,
+          "pred_score": 0.0301144842109805,
           "odds_win": 3.8,
           "odds_place": 1.5,
           "horse_name": "エイヘンハールト"
         },
         {
-          "rank": 2,
-          "horse_num": 4,
-          "pred_ev_place": -0.978340472118176,
-          "pred_score": 0.021659527881824,
-          "odds_win": 13.8,
-          "odds_place": 3.1,
-          "horse_name": "ミエノブラボー"
-        },
-        {
           "rank": 3,
-          "horse_num": 7,
-          "pred_ev_place": -0.9857582360977372,
-          "pred_score": 0.0142417639022627,
-          "odds_win": 14.9,
-          "odds_place": 3.3,
-          "horse_name": "ルージュナリッシュ"
+          "horse_num": 15,
+          "pred_ev_place": -0.9802922161112056,
+          "pred_score": 0.0197077838887944,
+          "odds_win": 4.8,
+          "odds_place": 1.6,
+          "horse_name": "ディオデルマーレ"
         }
       ],
-      "tickets": []
+      "tickets": [
+        {
+          "bet_type": "wide",
+          "combo": "316",
+          "ev_est": 1.8233406340864515,
+          "est_odds": 4284.10558985938,
+          "horses": [
+            {
+              "horse_num": 3,
+              "horse_name": "ビッグフラワー"
+            },
+            {
+              "horse_num": 16,
+              "horse_name": "ヴァイタルピース"
+            }
+          ]
+        }
+      ]
     },
     {
       "race_key": "07261409",
@@ -1447,8 +1215,8 @@
         {
           "rank": 1,
           "horse_num": 1,
-          "pred_ev_place": -0.9515615696837568,
-          "pred_score": 0.048438430316243,
+          "pred_ev_place": -0.9529428994912384,
+          "pred_score": 0.0470571005087616,
           "odds_win": 4.4,
           "odds_place": 1.6,
           "horse_name": "コルテオソレイユ"
@@ -1456,40 +1224,23 @@
         {
           "rank": 2,
           "horse_num": 4,
-          "pred_ev_place": -0.9708315790201776,
-          "pred_score": 0.0291684209798225,
+          "pred_ev_place": -0.9658380335505224,
+          "pred_score": 0.0341619664494776,
           "odds_win": 5.8,
           "odds_place": 1.9,
           "horse_name": "ネッタイヤライ"
         },
         {
           "rank": 3,
-          "horse_num": 10,
-          "pred_ev_place": -0.9745917453369288,
-          "pred_score": 0.0254082546630712,
-          "odds_win": 9.3,
-          "odds_place": 2.6,
-          "horse_name": "ブルースカイブルー"
+          "horse_num": 3,
+          "pred_ev_place": -0.9683651851611584,
+          "pred_score": 0.0316348148388414,
+          "odds_win": 4.1,
+          "odds_place": 1.6,
+          "horse_name": "チュウワカーネギー"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "wide",
-          "combo": "710",
-          "ev_est": 2.096684004537769,
-          "est_odds": 1607.1632987230448,
-          "horses": [
-            {
-              "horse_num": 7,
-              "horse_name": "リアライズブラーヴ"
-            },
-            {
-              "horse_num": 10,
-              "horse_name": "ブルースカイブルー"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "07261410",
@@ -1512,8 +1263,8 @@
         {
           "rank": 1,
           "horse_num": 6,
-          "pred_ev_place": -0.9651599714674348,
-          "pred_score": 0.0348400285325652,
+          "pred_ev_place": -0.9485331503106386,
+          "pred_score": 0.0514668496893614,
           "odds_win": 5.0,
           "odds_place": 2.0,
           "horse_name": "テーオーライマン"
@@ -1521,52 +1272,32 @@
         {
           "rank": 2,
           "horse_num": 9,
-          "pred_ev_place": -0.9741926276090916,
-          "pred_score": 0.0258073723909083,
+          "pred_ev_place": -0.9617501377789038,
+          "pred_score": 0.0382498622210961,
           "odds_win": 8.1,
           "odds_place": 2.7,
           "horse_name": "タイセイアディクト"
         },
         {
           "rank": 3,
-          "horse_num": 16,
-          "pred_ev_place": -0.9814944756000236,
-          "pred_score": 0.0185055243999765,
-          "odds_win": 19.5,
-          "odds_place": 5.2,
-          "horse_name": "レッドリベルタ"
+          "horse_num": 8,
+          "pred_ev_place": -0.9788848432401702,
+          "pred_score": 0.0211151567598297,
+          "odds_win": 5.8,
+          "odds_place": 2.2,
+          "horse_name": "コーカサスゴールド"
         }
       ],
       "tickets": [
         {
-          "bet_type": "sanrenpuku",
-          "combo": "91316",
-          "ev_est": 3.3490943205164605,
-          "est_odds": 24344.01688698875,
-          "horses": [
-            {
-              "horse_num": 9,
-              "horse_name": "タイセイアディクト"
-            },
-            {
-              "horse_num": 13,
-              "horse_name": "バルダンツァ"
-            },
-            {
-              "horse_num": 16,
-              "horse_name": "レッドリベルタ"
-            }
-          ]
-        },
-        {
           "bet_type": "wide",
-          "combo": "916",
-          "ev_est": 1.7273833145013096,
-          "est_odds": 2103.677147056526,
+          "combo": "216",
+          "ev_est": 1.7886580734821893,
+          "est_odds": 4363.182230932053,
           "horses": [
             {
-              "horse_num": 9,
-              "horse_name": "タイセイアディクト"
+              "horse_num": 2,
+              "horse_name": "コスモコンフェルマ"
             },
             {
               "horse_num": 16,
@@ -1596,12 +1327,12 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 1,
-          "pred_ev_place": -0.9756280196798984,
-          "pred_score": 0.0243719803201016,
-          "odds_win": 12.3,
-          "odds_place": 3.4,
-          "horse_name": "マピュース"
+          "horse_num": 7,
+          "pred_ev_place": -0.9708827536680776,
+          "pred_score": 0.0291172463319224,
+          "odds_win": 6.7,
+          "odds_place": 2.4,
+          "horse_name": "チェルビアット"
         }
       ],
       "tickets": []
@@ -1624,33 +1355,70 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 6,
-          "pred_ev_place": -0.9726105285200786,
-          "pred_score": 0.0273894714799214,
-          "odds_win": 3.7,
-          "odds_place": 1.5,
-          "horse_name": "シルフズミスチーフ"
+          "horse_num": 14,
+          "pred_ev_place": -0.964654859654806,
+          "pred_score": 0.0353451403451939,
+          "odds_win": 3.1,
+          "odds_place": 1.4,
+          "horse_name": "フルドド"
         },
         {
           "rank": 2,
           "horse_num": 3,
-          "pred_ev_place": -0.9726418607018684,
-          "pred_score": 0.0273581392981314,
+          "pred_ev_place": -0.9710499322302883,
+          "pred_score": 0.0289500677697116,
           "odds_win": 13.2,
           "odds_place": 3.0,
           "horse_name": "ハッピーウィズユー"
         },
         {
           "rank": 3,
-          "horse_num": 10,
-          "pred_ev_place": -0.9807450298251746,
-          "pred_score": 0.0192549701748253,
-          "odds_win": 25.8,
-          "odds_place": 5.2,
-          "horse_name": "ナムラペルル"
+          "horse_num": 6,
+          "pred_ev_place": -0.9717815649880128,
+          "pred_score": 0.028218435011987,
+          "odds_win": 3.7,
+          "odds_place": 1.5,
+          "horse_name": "シルフズミスチーフ"
         }
       ],
-      "tickets": []
+      "tickets": [
+        {
+          "bet_type": "sanrenpuku",
+          "combo": "81012",
+          "ev_est": 4.56408269323533,
+          "est_odds": 37497.9798603543,
+          "horses": [
+            {
+              "horse_num": 8,
+              "horse_name": "メイプルギャング"
+            },
+            {
+              "horse_num": 10,
+              "horse_name": "ナムラペルル"
+            },
+            {
+              "horse_num": 12,
+              "horse_name": "フェゲフォイア"
+            }
+          ]
+        },
+        {
+          "bet_type": "wide",
+          "combo": "810",
+          "ev_est": 3.173516111575199,
+          "est_odds": 5647.750696596984,
+          "horses": [
+            {
+              "horse_num": 8,
+              "horse_name": "メイプルギャング"
+            },
+            {
+              "horse_num": 10,
+              "horse_name": "ナムラペルル"
+            }
+          ]
+        }
+      ]
     },
     {
       "race_key": "09261a01",
@@ -1671,8 +1439,8 @@
         {
           "rank": 1,
           "horse_num": 11,
-          "pred_ev_place": -0.9503648209157416,
-          "pred_score": 0.0496351790842582,
+          "pred_ev_place": -0.9615907143293398,
+          "pred_score": 0.0384092856706601,
           "odds_win": 3.8,
           "odds_place": 1.4,
           "horse_name": "ペイシャサウス"
@@ -1680,27 +1448,27 @@
         {
           "rank": 2,
           "horse_num": 9,
-          "pred_ev_place": -0.979267940112208,
-          "pred_score": 0.020732059887792,
+          "pred_ev_place": -0.971617161933264,
+          "pred_score": 0.0283828380667359,
           "odds_win": 26.7,
           "odds_place": 4.3,
           "horse_name": "メモリーデイズ"
         },
         {
           "rank": 3,
-          "horse_num": 8,
-          "pred_ev_place": -0.9816437592636932,
-          "pred_score": 0.0183562407363067,
-          "odds_win": 13.1,
-          "odds_place": 2.5,
-          "horse_name": "ワンダーアスク"
+          "horse_num": 14,
+          "pred_ev_place": -0.9725895024397604,
+          "pred_score": 0.0274104975602396,
+          "odds_win": 2.0,
+          "odds_place": 1.2,
+          "horse_name": "シオンダンサー"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
           "combo": "40509",
-          "ev_est": 6.449253068508948,
+          "ev_est": 5.202236593002503,
           "est_odds": 37312.35871867067,
           "horses": [
             {
@@ -1711,7 +1479,7 @@
         {
           "bet_type": "wide",
           "combo": "409",
-          "ev_est": 4.626826891503618,
+          "ev_est": 4.212816226203961,
           "est_odds": 6416.428001784018,
           "horses": [
             {
@@ -1740,65 +1508,65 @@
         {
           "rank": 1,
           "horse_num": 12,
-          "pred_ev_place": -0.965190783622476,
-          "pred_score": 0.0348092163775241,
+          "pred_ev_place": -0.9504518995417156,
+          "pred_score": 0.0495481004582842,
           "odds_win": 8.4,
           "odds_place": 2.3,
           "horse_name": "ジャスティンレビン"
         },
         {
           "rank": 2,
-          "horse_num": 5,
-          "pred_ev_place": -0.9761637135661156,
-          "pred_score": 0.0238362864338843,
-          "odds_win": 20.8,
-          "odds_place": 4.2,
-          "horse_name": "ブクブクー"
+          "horse_num": 1,
+          "pred_ev_place": -0.9581256820757418,
+          "pred_score": 0.0418743179242582,
+          "odds_win": 3.5,
+          "odds_place": 1.3,
+          "horse_name": "アーサーバローズ"
         },
         {
           "rank": 3,
-          "horse_num": 11,
-          "pred_ev_place": -0.9817184980666808,
-          "pred_score": 0.0182815019333191,
-          "odds_win": 34.2,
-          "odds_place": 6.5,
-          "horse_name": "ワールドロイヤル"
+          "horse_num": 4,
+          "pred_ev_place": -0.9633394482796676,
+          "pred_score": 0.0366605517203324,
+          "odds_win": 3.4,
+          "odds_place": 1.3,
+          "horse_name": "エイシンリブウェル"
         }
       ],
       "tickets": [
         {
           "bet_type": "sanrenpuku",
-          "combo": "51011",
-          "ev_est": 11.29255062929602,
-          "est_odds": 37462.91809838558,
+          "combo": "51112",
+          "ev_est": 3.3379484278076488,
+          "est_odds": 14604.188411235056,
           "horses": [
             {
               "horse_num": 5,
               "horse_name": "ブクブクー"
             },
             {
-              "horse_num": 10,
-              "horse_name": "メイショウゴッホ"
-            },
-            {
               "horse_num": 11,
               "horse_name": "ワールドロイヤル"
+            },
+            {
+              "horse_num": 12,
+              "horse_name": "ジャスティンレビン"
             }
           ]
         },
         {
           "bet_type": "wide",
-          "combo": "511",
-          "ev_est": 6.702854609217473,
-          "est_odds": 4499.33299812382,
+          "combo": "1112",
+          "ev_est": 2.6219060037771977,
+          "est_odds": 2463.920451353521,
           "horses": [
-            {
-              "horse_num": 5,
-              "horse_name": "ブクブクー"
-            },
             {
               "horse_num": 11,
               "horse_name": "ワールドロイヤル"
+            },
+            {
+              "horse_num": 12,
+              "horse_name": "ジャスティンレビン"
             }
           ]
         }
@@ -1823,32 +1591,60 @@
         {
           "rank": 1,
           "horse_num": 7,
-          "pred_ev_place": -0.9589829193321736,
-          "pred_score": 0.0410170806678262,
+          "pred_ev_place": -0.9347790829524804,
+          "pred_score": 0.0652209170475195,
           "odds_win": 3.3,
           "odds_place": 1.4,
           "horse_name": "メイショウテンジン"
         },
         {
           "rank": 2,
-          "horse_num": 13,
-          "pred_ev_place": -0.9625679267409644,
-          "pred_score": 0.0374320732590356,
-          "odds_win": 4.7,
-          "odds_place": 1.7,
-          "horse_name": "マクアケ"
+          "horse_num": 8,
+          "pred_ev_place": -0.9506143507972944,
+          "pred_score": 0.0493856492027054,
+          "odds_win": 5.8,
+          "odds_place": 1.9,
+          "horse_name": "キャッチアシーフ"
         },
         {
           "rank": 3,
           "horse_num": 12,
-          "pred_ev_place": -0.9798652196321368,
-          "pred_score": 0.020134780367863,
+          "pred_ev_place": -0.9553386757280278,
+          "pred_score": 0.0446613242719722,
           "odds_win": 3.9,
           "odds_place": 1.5,
           "horse_name": "アドフランマム"
         }
       ],
-      "tickets": []
+      "tickets": [
+        {
+          "bet_type": "sanrenpuku",
+          "combo": "10204",
+          "ev_est": 8.46107415917761,
+          "est_odds": 97233.74244003704,
+          "horses": [
+            {
+              "horse_num": 10204
+            }
+          ]
+        },
+        {
+          "bet_type": "wide",
+          "combo": "102",
+          "ev_est": 3.9318513727522473,
+          "est_odds": 9787.383207736217,
+          "horses": [
+            {
+              "horse_num": 10,
+              "horse_name": "ヴォンドゥ"
+            },
+            {
+              "horse_num": 2,
+              "horse_name": "ナムラステラ"
+            }
+          ]
+        }
+      ]
     },
     {
       "race_key": "09261a04",
@@ -1869,32 +1665,55 @@
         {
           "rank": 1,
           "horse_num": 6,
-          "pred_ev_place": -0.9572573864550418,
-          "pred_score": 0.0427426135449582,
+          "pred_ev_place": -0.9525984203388516,
+          "pred_score": 0.0474015796611484,
           "odds_win": 3.3,
           "odds_place": 1.4,
           "horse_name": "ヴィラジョヴィス"
         },
         {
           "rank": 2,
-          "horse_num": 7,
-          "pred_ev_place": -0.9594432268579824,
-          "pred_score": 0.0405567731420175,
-          "odds_win": 13.9,
-          "odds_place": 2.8,
-          "horse_name": "レイワノキセキ"
+          "horse_num": 8,
+          "pred_ev_place": -0.9662482663463718,
+          "pred_score": 0.0337517336536281,
+          "odds_win": 2.4,
+          "odds_place": 1.3,
+          "horse_name": "ゴールドアクセス"
         },
         {
           "rank": 3,
-          "horse_num": 2,
-          "pred_ev_place": -0.980151486784118,
-          "pred_score": 0.0198485132158819,
-          "odds_win": 32.6,
-          "odds_place": 5.5,
-          "horse_name": "パゴスピグイノス"
+          "horse_num": 7,
+          "pred_ev_place": -0.9761601561363424,
+          "pred_score": 0.0238398438636575,
+          "odds_win": 13.9,
+          "odds_place": 2.8,
+          "horse_name": "レイワノキセキ"
         }
       ],
-      "tickets": []
+      "tickets": [
+        {
+          "bet_type": "sanrenpuku",
+          "combo": "20912",
+          "ev_est": 3.5734860577331924,
+          "est_odds": 50524.90949262506,
+          "horses": [
+            {
+              "horse_num": 20912
+            }
+          ]
+        },
+        {
+          "bet_type": "wide",
+          "combo": "209",
+          "ev_est": 3.463745344729429,
+          "est_odds": 8556.188272571619,
+          "horses": [
+            {
+              "horse_num": 209
+            }
+          ]
+        }
+      ]
     },
     {
       "race_key": "09261a05",
@@ -1915,55 +1734,32 @@
         {
           "rank": 1,
           "horse_num": 6,
-          "pred_ev_place": -0.9467182554375992,
-          "pred_score": 0.0532817445624008,
+          "pred_ev_place": -0.9673676745354208,
+          "pred_score": 0.0326323254645791,
           "odds_win": 3.2,
           "odds_place": 1.5,
           "horse_name": "フルールジェンヌ"
         },
         {
           "rank": 2,
-          "horse_num": 7,
-          "pred_ev_place": -0.9654475044143174,
-          "pred_score": 0.0345524955856826,
-          "odds_win": 4.9,
-          "odds_place": 1.8,
-          "horse_name": "グレースジェンヌ"
+          "horse_num": 10,
+          "pred_ev_place": -0.9680505372219316,
+          "pred_score": 0.0319494627780684,
+          "odds_win": 7.2,
+          "odds_place": 2.2,
+          "horse_name": "ジャスパーメルチェ"
         },
         {
           "rank": 3,
-          "horse_num": 11,
-          "pred_ev_place": -0.9804481714630552,
-          "pred_score": 0.0195518285369449,
-          "odds_win": 8.9,
-          "odds_place": 2.6,
-          "horse_name": "シラヌイ"
+          "horse_num": 3,
+          "pred_ev_place": -0.9804249961199604,
+          "pred_score": 0.0195750038800396,
+          "odds_win": 5.2,
+          "odds_place": 1.8,
+          "horse_name": "ドルチェミスト"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "40509",
-          "ev_est": 4.142653005778177,
-          "est_odds": 26489.624313578683,
-          "horses": [
-            {
-              "horse_num": 40509
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "509",
-          "ev_est": 2.5391975430947955,
-          "est_odds": 4001.8668146805912,
-          "horses": [
-            {
-              "horse_num": 509
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "09261a06",
@@ -1983,70 +1779,33 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 13,
-          "pred_ev_place": -0.9675359023995744,
-          "pred_score": 0.0324640976004254,
-          "odds_win": 3.4,
-          "odds_place": 1.6,
-          "horse_name": "タガノエルー"
-        },
-        {
-          "rank": 2,
           "horse_num": 3,
-          "pred_ev_place": -0.974105804288534,
-          "pred_score": 0.025894195711466,
+          "pred_ev_place": -0.960033337588453,
+          "pred_score": 0.039966662411547,
           "odds_win": 7.2,
           "odds_place": 2.3,
           "horse_name": "ワンダフルデイズ"
         },
         {
+          "rank": 2,
+          "horse_num": 13,
+          "pred_ev_place": -0.9610300559634614,
+          "pred_score": 0.0389699440365386,
+          "odds_win": 3.4,
+          "odds_place": 1.6,
+          "horse_name": "タガノエルー"
+        },
+        {
           "rank": 3,
           "horse_num": 12,
-          "pred_ev_place": -0.9744906072426314,
-          "pred_score": 0.0255093927573686,
+          "pred_ev_place": -0.9693255866726204,
+          "pred_score": 0.0306744133273797,
           "odds_win": 5.5,
           "odds_place": 2.0,
           "horse_name": "アメリカンコール"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "10811",
-          "ev_est": 5.10627806141617,
-          "est_odds": 35528.42652153242,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "セイントエルモズ"
-            },
-            {
-              "horse_num": 8,
-              "horse_name": "ランニングビーチ"
-            },
-            {
-              "horse_num": 11,
-              "horse_name": "アトモス"
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "811",
-          "ev_est": 1.8613744745473864,
-          "est_odds": 3221.5231893852992,
-          "horses": [
-            {
-              "horse_num": 8,
-              "horse_name": "ランニングビーチ"
-            },
-            {
-              "horse_num": 11,
-              "horse_name": "アトモス"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "09261a07",
@@ -2067,29 +1826,29 @@
         {
           "rank": 1,
           "horse_num": 1,
-          "pred_ev_place": -0.9617421073838196,
-          "pred_score": 0.0382578926161804,
+          "pred_ev_place": -0.9612469751385856,
+          "pred_score": 0.0387530248614144,
           "odds_win": 9.4,
           "odds_place": 2.3,
           "horse_name": "クラッチプレイヤー"
         },
         {
           "rank": 2,
-          "horse_num": 4,
-          "pred_ev_place": -0.9645429661791804,
-          "pred_score": 0.0354570338208195,
-          "odds_win": 5.5,
-          "odds_place": 1.7,
-          "horse_name": "ジュンライデン"
-        },
-        {
-          "rank": 3,
           "horse_num": 3,
-          "pred_ev_place": -0.9721943668899904,
-          "pred_score": 0.0278056331100094,
+          "pred_ev_place": -0.9633788336354648,
+          "pred_score": 0.0366211663645352,
           "odds_win": 3.9,
           "odds_place": 1.4,
           "horse_name": "エリカアンディーヴ"
+        },
+        {
+          "rank": 3,
+          "horse_num": 6,
+          "pred_ev_place": -0.9672855901373466,
+          "pred_score": 0.0327144098626533,
+          "odds_win": 2.3,
+          "odds_place": 1.2,
+          "horse_name": "セイキュート"
         }
       ],
       "tickets": []
@@ -2113,8 +1872,8 @@
         {
           "rank": 1,
           "horse_num": 5,
-          "pred_ev_place": -0.9778113719680604,
-          "pred_score": 0.0221886280319395,
+          "pred_ev_place": -0.9470255192258727,
+          "pred_score": 0.0529744807741271,
           "odds_win": 1.9,
           "odds_place": 1.2,
           "horse_name": "ポイントネモ"
@@ -2131,8 +1890,8 @@
         {
           "rank": 3,
           "horse_num": 7,
-          "pred_ev_place": -0.9824209872839894,
-          "pred_score": 0.0175790127160105,
+          "pred_ev_place": -0.9844159712149732,
+          "pred_score": 0.0155840287850267,
           "odds_win": 26.3,
           "odds_place": 4.3,
           "horse_name": "クレスコドルフィン"
@@ -2142,7 +1901,7 @@
         {
           "bet_type": "sanrenpuku",
           "combo": "10407",
-          "ev_est": 5.569083701374165,
+          "ev_est": 3.906657387404272,
           "est_odds": 13697.859433276131,
           "horses": [
             {
@@ -2152,17 +1911,12 @@
         },
         {
           "bet_type": "wide",
-          "combo": "107",
-          "ev_est": 3.4186698221286296,
+          "combo": "407",
+          "ev_est": 2.573859799820447,
           "est_odds": 2646.9839947741148,
           "horses": [
             {
-              "horse_num": 10,
-              "horse_name": "ルシャリオ"
-            },
-            {
-              "horse_num": 7,
-              "horse_name": "クレスコドルフィン"
+              "horse_num": 407
             }
           ]
         }
@@ -2189,8 +1943,8 @@
         {
           "rank": 1,
           "horse_num": 4,
-          "pred_ev_place": -0.9516112703465116,
-          "pred_score": 0.0483887296534883,
+          "pred_ev_place": -0.9167863094636736,
+          "pred_score": 0.0832136905363263,
           "odds_win": 2.4,
           "odds_place": 1.2,
           "horse_name": "テラメリタ"
@@ -2198,8 +1952,8 @@
         {
           "rank": 2,
           "horse_num": 5,
-          "pred_ev_place": -0.9539870212041268,
-          "pred_score": 0.0460129787958731,
+          "pred_ev_place": -0.9529735494909054,
+          "pred_score": 0.0470264505090946,
           "odds_win": 2.7,
           "odds_place": 1.2,
           "horse_name": "フェアリーライク"
@@ -2207,14 +1961,37 @@
         {
           "rank": 3,
           "horse_num": 1,
-          "pred_ev_place": -0.9789214097166822,
-          "pred_score": 0.0210785902833178,
+          "pred_ev_place": -0.9756536562517348,
+          "pred_score": 0.0243463437482652,
           "odds_win": 7.2,
           "odds_place": 1.7,
           "horse_name": "リカントロポ"
         }
       ],
-      "tickets": []
+      "tickets": [
+        {
+          "bet_type": "sanrenpuku",
+          "combo": "60708",
+          "ev_est": 3.1078255772639114,
+          "est_odds": 10899.33547875235,
+          "horses": [
+            {
+              "horse_num": 60708
+            }
+          ]
+        },
+        {
+          "bet_type": "wide",
+          "combo": "708",
+          "ev_est": 1.953477159309983,
+          "est_odds": 2832.4415855390703,
+          "horses": [
+            {
+              "horse_num": 708
+            }
+          ]
+        }
+      ]
     },
     {
       "race_key": "09261a10",
@@ -2237,69 +2014,32 @@
         {
           "rank": 1,
           "horse_num": 8,
-          "pred_ev_place": -0.9629063900918996,
-          "pred_score": 0.0370936099081005,
+          "pred_ev_place": -0.9534375754466128,
+          "pred_score": 0.0465624245533871,
           "odds_win": 4.2,
           "odds_place": 1.7,
           "horse_name": "ルシュヴァルドール"
         },
         {
           "rank": 2,
-          "horse_num": 10,
-          "pred_ev_place": -0.9735494098398728,
-          "pred_score": 0.026450590160127,
-          "odds_win": 38.9,
-          "odds_place": 8.5,
-          "horse_name": "レッドプロフェシー"
+          "horse_num": 9,
+          "pred_ev_place": -0.9571649689613804,
+          "pred_score": 0.0428350310386196,
+          "odds_win": 6.3,
+          "odds_place": 2.1,
+          "horse_name": "ハギノサステナブル"
         },
         {
           "rank": 3,
-          "horse_num": 15,
-          "pred_ev_place": -0.974171933785775,
-          "pred_score": 0.0258280662142249,
-          "odds_win": 13.1,
-          "odds_place": 3.4,
-          "horse_name": "タイトニット"
+          "horse_num": 10,
+          "pred_ev_place": -0.9699463187909528,
+          "pred_score": 0.030053681209047,
+          "odds_win": 38.9,
+          "odds_place": 8.5,
+          "horse_name": "レッドプロフェシー"
         }
       ],
-      "tickets": [
-        {
-          "bet_type": "sanrenpuku",
-          "combo": "101516",
-          "ev_est": 3.566813858870561,
-          "est_odds": 35003.88255376954,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "レッドプロフェシー"
-            },
-            {
-              "horse_num": 15,
-              "horse_name": "タイトニット"
-            },
-            {
-              "horse_num": 16,
-              "horse_name": "ロードラビリンス"
-            }
-          ]
-        },
-        {
-          "bet_type": "wide",
-          "combo": "1016",
-          "ev_est": 3.399206620757715,
-          "est_odds": 7429.272119086448,
-          "horses": [
-            {
-              "horse_num": 10,
-              "horse_name": "レッドプロフェシー"
-            },
-            {
-              "horse_num": 16,
-              "horse_name": "ロードラビリンス"
-            }
-          ]
-        }
-      ]
+      "tickets": []
     },
     {
       "race_key": "09261a11",
@@ -2321,12 +2061,12 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 7,
-          "pred_ev_place": -0.9620634201775098,
-          "pred_score": 0.0379365798224902,
-          "odds_win": 7.5,
-          "odds_place": 2.0,
-          "horse_name": "マイネルエンペラー"
+          "horse_num": 4,
+          "pred_ev_place": -0.9605796769434976,
+          "pred_score": 0.0394203230565023,
+          "odds_win": 6.6,
+          "odds_place": 1.8,
+          "horse_name": "アクアヴァーナル"
         }
       ],
       "tickets": []
@@ -2349,27 +2089,27 @@
       "picks": [
         {
           "rank": 1,
-          "horse_num": 7,
-          "pred_ev_place": -0.9585379848781752,
-          "pred_score": 0.0414620151218247,
-          "odds_win": 5.6,
-          "odds_place": 2.0,
-          "horse_name": "ヨリノレジェンド"
-        },
-        {
-          "rank": 2,
           "horse_num": 9,
-          "pred_ev_place": -0.9656593295970702,
-          "pred_score": 0.0343406704029297,
+          "pred_ev_place": -0.9554224162148536,
+          "pred_score": 0.0445775837851464,
           "odds_win": 4.2,
           "odds_place": 1.7,
           "horse_name": "ウルスクローム"
         },
         {
+          "rank": 2,
+          "horse_num": 1,
+          "pred_ev_place": -0.96698755328346,
+          "pred_score": 0.0330124467165399,
+          "odds_win": 4.1,
+          "odds_place": 1.6,
+          "horse_name": "モズケイスター"
+        },
+        {
           "rank": 3,
           "horse_num": 2,
-          "pred_ev_place": -0.9739641291947744,
-          "pred_score": 0.0260358708052257,
+          "pred_ev_place": -0.9701816128322516,
+          "pred_score": 0.0298183871677485,
           "odds_win": 12.7,
           "odds_place": 3.3,
           "horse_name": "ダイシンリンク"
@@ -2379,7 +2119,7 @@
         {
           "bet_type": "sanrenpuku",
           "combo": "20412",
-          "ev_est": 6.708413215233925,
+          "ev_est": 6.792230873853676,
           "est_odds": 39476.73317725315,
           "horses": [
             {
@@ -2390,7 +2130,7 @@
         {
           "bet_type": "wide",
           "combo": "412",
-          "ev_est": 4.660596306169267,
+          "ev_est": 4.507422662417167,
           "est_odds": 8982.478338196857,
           "horses": [
             {
