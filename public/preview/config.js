@@ -18,6 +18,7 @@ window.SITE_CONFIG = {
   },
   "membership": {
     "enabled": true,
+    "provider": "stripe",
     "apiBase": "https://api.keibapicknavi.com",
     "siteOrigin": "https://www.keibapicknavi.com",
     "accountPath": "/account.html",
