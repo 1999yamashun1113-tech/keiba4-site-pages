@@ -105,8 +105,6 @@ function renderSignedIn(payload) {
   els.signedIn.hidden = false;
   if (payload.hasAccess) {
     els.statusText.textContent = 'premium プランの閲覧権限があります。';
-  } else if (state.billingProvider === 'fincode') {
-    els.statusText.textContent = '契約状態は保存されています。必要に応じてこのページから解約できます。';
   } else {
     els.statusText.textContent = '契約状態は保存されています。必要に応じて契約情報をご確認ください。';
   }
@@ -118,7 +116,7 @@ function renderSignedIn(payload) {
   }
   if (els.openPortalButton) {
     els.openPortalButton.hidden = payload.canManageBilling === false;
-    els.openPortalButton.textContent = state.billingProvider === 'fincode' ? '解約する' : '支払い方法・解約';
+    els.openPortalButton.textContent = '支払い方法・解約';
   }
 }
 
@@ -213,16 +211,6 @@ els.setupForm.addEventListener('submit', async (event) => {
 els.openPortalButton.addEventListener('click', async () => {
   try {
     showNotice('');
-    if (state.billingProvider === 'fincode') {
-      const confirmed = window.confirm('premium プランを解約します。よろしいですか。');
-      if (!confirmed) {
-        return;
-      }
-      const payload = await memberApi('/api/member/cancel-subscription', { method: 'POST' });
-      renderSignedIn(payload);
-      showNotice('解約手続きを受け付けました。', 'info');
-      return;
-    }
     const payload = await memberApi('/api/member/create-portal-session', { method: 'POST' });
     if (!payload.portalUrl) {
       throw new Error('会員管理ページを開けませんでした。');
