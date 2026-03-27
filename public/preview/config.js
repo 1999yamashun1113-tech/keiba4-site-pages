@@ -7,14 +7,14 @@ window.SITE_CONFIG = {
   "maintenanceStatus": {
     "enabled": true,
     "headline": "現在サイトメンテナンス中です",
-    "message": "サイト全体を修正中です。表示内容は暫定のため、順次更新します。 現在の掲載対象日は 3/22 です。"
+    "message": "サイト全体を修正中です。表示内容は暫定のため、順次更新します。 現在の掲載対象日は 3/28 です。"
   },
   "publicationStatus": {
-    "displayRaceDate": "20260322",
-    "checkedAtUtc": "2026-03-22T14:33:02Z",
-    "pendingRaceDate": "",
-    "headline": "3/22分を公開中です",
-    "message": "最新取得日は 3/22 です。"
+    "displayRaceDate": "20260328",
+    "checkedAtUtc": "2026-03-27T09:24:51Z",
+    "pendingRaceDate": "20260328",
+    "headline": "3/28分はデータ取得待ちです",
+    "message": "最新取得日は 3/28 です。3/28 分の予想は前日の夕方に公表されます。"
   },
   "membership": {
     "enabled": true,
