@@ -11,10 +11,10 @@ window.SITE_CONFIG = {
   },
   "publicationStatus": {
     "displayRaceDate": "20260329",
-    "checkedAtUtc": "2026-03-27T12:05:10Z",
-    "pendingRaceDate": "",
-    "headline": "3/29分を公開中です",
-    "message": "最新取得日は 3/29 です。"
+    "checkedAtUtc": "2026-03-27T14:44:51Z",
+    "pendingRaceDate": "20260328",
+    "headline": "3/28分はデータ取得待ちです",
+    "message": "最新取得日は 3/29 です。3/28 分の予想は前日の夕方に公表されます。"
   },
   "membership": {
     "enabled": true,
